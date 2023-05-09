@@ -24,59 +24,60 @@
   <body>
     <!-- bootstrap requires a containing element to wrap site contents in the grid system-->
     <!-- this creates a responsive full-width page-->
-    <class="container-fluid">
-      <!--NavBar-->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Singapore Finance Page</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarTogglerDemo02"
-          aria-controls="navbarTogglerDemo02"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="#"
-                >Home <span class="sr-only">(current)</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Help</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input
-              class="form-control mr-sm-2"
-              type="search"
-              placeholder="Search"
-            />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-              Search
+    <div class="container-fluid bootstrap-override">
+        <!--NavBar-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Singapore Finance Page</a>
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarTogglerDemo02"
+                    aria-controls="navbarTogglerDemo02"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
             </button>
-          </form>
-        </div>
-      </nav>
-      <!-- End of top navbar-->
-      <!-- Side navbar, use list items for each topic-->
-        <div class="wrapper">
-            <nav id="sidebar" class="navbar-light bg-light">
-                <ul class="list-unstyled components">
-                    <p id="nav-header">Navigation</p>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"
+                        >Home <span class="sr-only">(current)</span></a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input
+                            class="form-control mr-sm-2"
+                            type="search"
+                            placeholder="Search"
+                    />
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </nav>
+        <!-- End of top navbar-->
+        <main id="main">
+            <!-- Side navbar, use list items for each topic-->
+            <div class="wrapper">
+                <nav id="sidebar" class="navbar-light bg-light">
+                    <ul class="list-unstyled components">
+                        <p id="nav-header">Navigation</p>
                         <li class="active">
-                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Topic 1</a>
+                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Topic
+                                1</a>
                             <ul class="collapse list-unstyled" id="homeSubmenu">
                                 <li>
                                     <a href="#">Subtopic 1</a>
@@ -89,27 +90,49 @@
                                 </li>
                             </ul>
                         </li>
-                </ul>
-            </nav>
-        </div>
+                    </ul>
+                </nav>
+            </div>
+            <!-- End of side navbar, start of displayed contents-->
+            <div class="container-fluid bootstrap-override"  id="right-container" >
+                <div class="container-fluid m-0 pl-4 pr-4 pt-1" id="content">
+                    <h2>How to Financial Independence, Retire Early!</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam consequatur dolore ea ex harum
+                        impedit labore molestiae perspiciatis possimus, your mum reprehenderit repudiandae
+                        rerum sunt tempora totam voluptatum.</p>
+                    <p>A aliquam aliquid amet corporis dicta dolorum eligendi, eos ex facere incidunt ipsa nemo nostrum
+                        provident quia quo repellendus unde! Cupiditate enim error eum iusto provident tempora ullam
+                        voluptate voluptates?</p>
+                    <p>Under code editor, write without the quotes "(p>lorem)*20" and press tab to generate placeholder
+                       and see how it looks like with content that overflows.</p>
+                </div>
+                <!-- End of contents, start of comments-->
+                <div class="container-fluid bg-secondary text-light m-0 pl-4 pr-4 pt-2" id="comments">
+                    <h4>Responses (1)</h4>
+                    <p>What a shitty article, lorem ipsum this lorem ipsum that</p>
+                </div>
+                <!-- End of comments-->
+            </div>
+            <!-- End of contents -->
+        </main>
     </div>
-    <!--Some bootstrapc components require these js scripts to function-->
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-    <!--Custom js file for sidebars-->
-    <script src="/sidebars.js"></script>
+        <!--Some bootstrapc components require these js scripts to function-->
+        <script
+                src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"
+        ></script>
+        <script
+                src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"
+        ></script>
+        <script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"
+        ></script>
+        <!--Custom js file for sidebars-->
+        <script src="/sidebars.js"></script>
   </body>
 </html>
