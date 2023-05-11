@@ -57,7 +57,7 @@
       <!-- End of top navbar-->
       <!-- login stuff here -->
       <main class="form-signin">
-        <form>
+        <form action="doLogin" method="POST">
           <!--Insert logo here-->
           <!-- <img class="mb-4" src="" alt="" width="72" height="57" /> -->
           <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
@@ -67,6 +67,7 @@
               type="text"
               class="form-control"
               id="floatingInput"
+              name="username"
               placeholder="Username"
             />
             <label for="floatingInput">Username</label>
@@ -76,6 +77,7 @@
               type="password"
               class="form-control"
               id="floatingPassword"
+              name="password"
               placeholder="Password"
             />
             <label for="floatingPassword">Password</label>

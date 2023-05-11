@@ -39,7 +39,6 @@ public class Controller extends HttpServlet {
         try {
             UserManager userManager = new UserManager(userEntitySessionBeanLocal);
             String path = request.getPathInfo();
-            path = path.split("/")[1];
             
             switch (path) {
                 case "login":
@@ -47,6 +46,23 @@ public class Controller extends HttpServlet {
                     break;
                 case "registration":
                     // display page - do nothing
+                case "doLogin": {
+                    String username = request.getParameter("name");
+                    String password = request.getParameter("password");
+                    
+                    userManager.userLogin(username, password);
+                    
+                    //redirect somewhere else?????
+                }
+                case "doRegistration": {
+                    String username = request.getParameter("name");
+                    String password = request.getParameter("password");
+                    
+                    userManager.createUserEntity(username, password);
+                    
+                    response.sendRedirect(request.getContextPath());
+                    return;
+                }
                 default:
                     //unmatched path will to go error.jsp
                     path = "error";

@@ -28,4 +28,10 @@ public class UserManager {
         return userEntitySessionBeanLocal.userLogin(username, password);
     }
     
+    public void createUserEntity(String username, String password) {
+        UserEntity userEntity = new UserEntity(username, password);
+        
+        userEntitySessionBeanLocal.createUserEntity(userEntity);
+    }
+    
 }
