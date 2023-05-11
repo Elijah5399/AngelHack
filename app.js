@@ -5,6 +5,11 @@ var path = require("path");
 var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var app = express();
+var cookieParser = require("cookie-parser");
+const connection = require("./routes/auth");
+
+app.locals.pluealize = require("pluralize");
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(logger("dev"));
@@ -13,6 +18,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "views")));
 
 app.use("/", indexRouter);
+
+/*
+app.route("/users").get(function (req, res, next) {
+  connection.query("SELECT * FROM `users`", function (error, results, fields) {
+    if (error) throw error;
+    res.json(results);
+  });
+});
+*/
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
