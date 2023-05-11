@@ -57,7 +57,8 @@
       <!-- End of top navbar-->
       <!-- registration stuff here -->
       <main class="form-signin">
-        <form>
+        <!--This activates the registration in auth.js-->
+        <form action="/registration" method="post">
           <!--Insert logo here-->
           <!-- <img class="mb-4" src="" alt="" width="72" height="57" /> -->
           <h1 class="h3 mb-3 fw-normal">Make an account</h1>
@@ -68,6 +69,7 @@
               class="form-control"
               id="floatingInput"
               placeholder="Username"
+              name="username"
             />
             <label for="floatingInput">Username</label>
           </div>
@@ -77,6 +79,7 @@
               class="form-control"
               id="floatingPassword"
               placeholder="Password"
+              name="password"
             />
             <label for="floatingPassword">Password</label>
           </div>

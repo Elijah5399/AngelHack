@@ -5,6 +5,7 @@ var path = require("path");
 var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var authRouter = require("./routes/auth");
+var session = require("express-session");
 var app = express();
 var cookieParser = require("cookie-parser");
 const connection = require("./routes/auth");

@@ -7,6 +7,7 @@ It is 5.49pm and im learning how to store secrets securely
 It is 10.45pm and i just figured out how to connect to the database
 It is 10.54pm and i just got the authentication to work!! :D
 It is 11.34pm and i just configured the sql table to accommodate SHA256 salts
+It is 12.09am and i just managed to get registration to insert entries into the cloud sql server :D
 
 IMPT SQL COMMANDS
 USE {database name}

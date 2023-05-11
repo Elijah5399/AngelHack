@@ -111,9 +111,10 @@ router.post("/registration", function (req, res, next) {
             return next(err);
           }
           var user = {
-            id: this.lastID,
+            //id: this.lastID,
             username: req.body.username,
           };
+          //TODO: address the issue of login not working as session is not used :(
           req.login(user, function (err) {
             if (err) {
               return next(err);
