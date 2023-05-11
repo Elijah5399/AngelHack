@@ -28,3 +28,12 @@ Current issues:
    Soln: Modify authentication methods
 4. the username input in login.ejs and registration.ejs causes previously entered and submitted text to be saved.
    Soln: TODO
+
+USEFUL LINKS
+https://getbootstrap.com/docs/4.1/getting-started/introduction/
+https://www.passportjs.org/
+https://expressjs.com/en/resources/middleware/session.html
+https://ejs.co/
+https://expressjs.com/
+https://nodejs.org/api/crypto.html
+https://expressjs.com/en/guide/routing.html
