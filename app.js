@@ -4,6 +4,7 @@ var express = require("express");
 var path = require("path");
 var logger = require("morgan");
 var indexRouter = require("./routes/index");
+var authRouter = require("./routes/auth");
 var app = express();
 var cookieParser = require("cookie-parser");
 const connection = require("./routes/auth");
@@ -17,7 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "views")));
 
+//establish linkage with index.js and auth.js so their .get and .post methods can be used
 app.use("/", indexRouter);
+app.use("/", authRouter);
 
 /*
 app.route("/users").get(function (req, res, next) {

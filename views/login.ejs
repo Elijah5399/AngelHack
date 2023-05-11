@@ -57,7 +57,8 @@
       <!-- End of top navbar-->
       <!-- login stuff here -->
       <main class="form-signin">
-        <form>
+        <!--This action triggers a response by auth.js-->
+        <form action="/login/password" method="post">
           <!--Insert logo here-->
           <!-- <img class="mb-4" src="" alt="" width="72" height="57" /> -->
           <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
@@ -84,13 +85,13 @@
           <button class="w-100 btn btn-lg btn-primary" type="submit">
             Sign in
           </button>
-          <div id="signUpPrompt">
-            <p>
-              Don't have an account?
-              <a href="/registration">Sign up</a>
-            </p>
-          </div>
         </form>
+        <div id="signUpPrompt">
+          <p>
+            Don't have an account?
+            <a href="/registration">Sign up</a>
+          </p>
+        </div>
       </main>
       <!--Some bootstrap components require these js scripts to function-->
       <script

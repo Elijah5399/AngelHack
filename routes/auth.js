@@ -71,6 +71,7 @@ passport.deserializeUser(function (user, cb) {
     return cb(null, user);
   });
 });
+
 router.get("/login", function (req, res, next) {
   res.render("login");
 });
@@ -79,5 +80,50 @@ router.get("/registration", function (req, res, next) {
   res.render("registration");
 });
 
+//redirects a person to the home page if their password is correct, and brings them back
+//to the login page if their password is wrong.
+router.post(
+  "/login/password",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+  })
+);
+
+//this function handles registration of new users
+router.post("/registration", function (req, res, next) {
+  var salt = crypto.randomBytes(16);
+  crypto.pbkdf2(
+    req.body.password,
+    salt,
+    310000,
+    32,
+    "sha256",
+    function (err, hashedPassword) {
+      if (err) {
+        return next(err);
+      }
+      connection.query(
+        "INSERT INTO users (username, hashed_password, salt) VALUES (?, ?, ?)",
+        [req.body.username, hashedPassword, salt],
+        function (err) {
+          if (err) {
+            return next(err);
+          }
+          var user = {
+            id: this.lastID,
+            username: req.body.username,
+          };
+          req.login(user, function (err) {
+            if (err) {
+              return next(err);
+            }
+            res.redirect("/");
+          });
+        }
+      );
+    }
+  );
+});
 module.exports = connection;
 module.exports = router;
