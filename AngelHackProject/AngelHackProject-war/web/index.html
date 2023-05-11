@@ -1,16 +1,135 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html lang="en">
+  <head>
+    <title>Singapore Finance Page</title>
+    <link href="style.css" rel="stylesheet" />
+    <!--Bootstrap core CSS-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <meta
+      name="description"
+      content="A finance page covering topics related to finance in Singapore"
+    />
+    <meta name="keywords" content="angelhack finance singapore" />
+    <meta charset="utf-8" />
+    <!-- this sets the width of the page to follow screen-width of device, and sets the initial zoom level when page is first loaded-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <!-- bootstrap requires a containing element to wrap site contents in the grid system-->
+    <!-- this creates a responsive full-width page-->
+    <div class="container-fluid bootstrap-override">
+      <!--NavBar-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <a class="navbar-brand" href="#">Singapore Finance Page</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="#" onclick="home()">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Help</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+        <!--Profile pic with link to login.html-->
+        <a href="login.html">
+          <img
+            class="float-right profileicon"
+            src="profilepic2.png"
+            alt=""
+            width="47"
+            height="40"
+          />
+        </a>
+      </nav>
+      <!-- End of top navbar-->
+      <main id="main">
+        <!-- Side navbar, use list items for each topic-->
+        <div class="wrapper">
+          <nav id="sidebar" class="navbar-light bg-light">
+            <ul class="list-unstyled components">
+              <p id="nav-header">Navigation</p>
+              <li class="active">
+                <a
+                  href="#homeSubmenu"
+                  data-bs-toggle="collapse"
+                  aria-expanded="false"
+                  class="dropdown-toggle"
+                  >Topic 1</a
+                >
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                  <li>
+                    <a href="#" onclick="topic1()">Subtopic 1</a>
+                  </li>
+                  <li>
+                    <a href="#" onclick="topic2()">Subtopic 2</a>
+                  </li>
+                  <li>
+                    <a href="#">Subtopic 3</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <button type="button" class="btn btn-secondary" onclick="backToTop()">Back to top</button>
+          </nav>
+        </div>
+        <!-- End of side navbar, start of displayed contents-->
+        <div class="container-fluid bootstrap-override" id="right-container">
+          <div class="container-fluid m-0 pl-4 pr-4 pt-1" id="content">
+            <h2 style="margin-bottom: 10px;">Financial Independence, Retire Early!</h2>
+            <p>
+              Welcome to Singapore Finance Page, where we aim to source for, verify and curate financial information relevant within
+              the Singapore context. For starters, click on any of the topics below, or go through the side bar
+              for a comprehensive zero-to-hero breakdown of how to start your financial journey!
+            </p>
+            <!-- FOR FUTURE CARD BASED CONTENT -->
+            <p>
+              Under code editor, write without the quotes "(p>lorem)*20" and
+              press tab to generate placeholder and see how it looks like with
+              content that overflows.
+            </p>
+          </div>
+          <!-- End of contents, start of comments-->
+          <div
+            class="container-fluid bg-info text-light m-0 pl-4 pr-4 pt-2"
+            id="comments"
+          >
+            <h4>Responses (1)</h4>
+            <p>What a shitty article, lorem ipsum this lorem ipsum that</p>
+          </div>
+          <!-- End of comments-->
+        </div>
+        <!-- End of contents -->
+      </main>
+    </div>
+    <!--Some bootstrap components require these js scripts to function-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
 </html>
