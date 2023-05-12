@@ -3,7 +3,9 @@
 .bootstrap-override.container-fluid {
   padding: 0;
 }
-
+.navbar-override {
+  --bs-navbar-padding-x: 1.5rem !important;
+}
 .wrapper {
   font-family: "Poppins", sans-serif;
   font-size: 1.5em;
