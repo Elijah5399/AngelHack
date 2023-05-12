@@ -131,7 +131,7 @@ router.post("/registration", function (req, res, next) {
 });
 
 router.all("*", function (req, res, next) {
-  res.send("Are you lost?");
+  res.render("error404");
 });
 
 module.exports = connection;
