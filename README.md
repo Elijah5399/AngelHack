@@ -13,10 +13,7 @@ SHOW COLUMNS in {table}
 
 Current issues:
 
-1. link all irrelevant HTTP requests to a 404 page
-2. Display "Incorrect username or password" message when an incorrect username/password is entered
-3. Change icon from profilepic2 to showing username + logout button when user is logged in
-4. Add logout functionality
+~~1. link all irrelevant HTTP requests to a 404 page~~ 2. Display "Incorrect username or password" message when an incorrect username/password is entered 3. Change icon from profilepic2 to showing username + logout button when user is logged in 4. Add logout functionality
 
 USEFUL LINKS
 https://getbootstrap.com/docs/4.1/getting-started/introduction/

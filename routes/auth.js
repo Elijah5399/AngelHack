@@ -129,5 +129,10 @@ router.post("/registration", function (req, res, next) {
     }
   );
 });
+
+router.all("*", function (req, res, next) {
+  res.send("Are you lost?");
+});
+
 module.exports = connection;
 module.exports = router;
