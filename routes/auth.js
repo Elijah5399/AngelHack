@@ -28,26 +28,18 @@ passport.use(
     connection.query(
       "SELECT * FROM users WHERE username = ?",
       [username],
-      function (err, row) {
+      function (err, result) {
         if (err) {
           return cb(err);
         }
-        if (!row) {
+        if (!result) {
           return cb(null, false, {
             message: "Incorrect username or password.",
           });
         }
-        console.log(
-          "Type of hashedPassword during login is: " + typeof hashedPassword
-        );
-        console.log(
-          "Type of row.hashed_password during login is: " +
-            typeof row.hashed_password
-        );
-        console.log("Type of row.salt during login is: " + typeof row.salt);
         crypto.pbkdf2(
           password,
-          row.salt,
+          result[0].salt,
           310000,
           32,
           "sha256",
@@ -55,12 +47,14 @@ passport.use(
             if (err) {
               return cb(err);
             }
-            if (!crypto.timingSafeEqual(row.hashed_password, hashedPassword)) {
+            if (
+              !crypto.timingSafeEqual(result[0].hashed_password, hashedPassword)
+            ) {
               return cb(null, false, {
                 message: "Incorrect username or password.",
               });
             }
-            return cb(null, row);
+            return cb(null, result);
           }
         );
       }
@@ -107,25 +101,18 @@ router.post("/registration", function (req, res, next) {
     32,
     "sha256",
     function (err, hashedPassword) {
-      console.log(
-        "type of hashed password inserted during registration is: " +
-          typeof hashedPassword
-      );
-      console.log(
-        "type of salt inserted during registration is: " + typeof salt
-      );
       if (err) {
         return next(err);
       }
       connection.query(
         "INSERT INTO users (username, hashed_password, salt) VALUES (?, ?, ?)",
         [req.body.username, hashedPassword, salt],
-        function (err) {
+        function (err, results) {
           if (err) {
             return next(err);
           }
           var user = {
-            //id: this.lastID,
+            id: results.id,
             username: req.body.username,
           };
           //TODO: address the issue of login not working as session is not used :(
