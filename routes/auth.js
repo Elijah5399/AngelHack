@@ -37,7 +37,14 @@ passport.use(
             message: "Incorrect username or password.",
           });
         }
-
+        console.log(
+          "Type of hashedPassword during login is: " + typeof hashedPassword
+        );
+        console.log(
+          "Type of row.hashed_password during login is: " +
+            typeof row.hashed_password
+        );
+        console.log("Type of row.salt during login is: " + typeof row.salt);
         crypto.pbkdf2(
           password,
           row.salt,
@@ -100,6 +107,13 @@ router.post("/registration", function (req, res, next) {
     32,
     "sha256",
     function (err, hashedPassword) {
+      console.log(
+        "type of hashed password inserted during registration is: " +
+          typeof hashedPassword
+      );
+      console.log(
+        "type of salt inserted during registration is: " + typeof salt
+      );
       if (err) {
         return next(err);
       }

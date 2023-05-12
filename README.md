@@ -1,14 +1,7 @@
 # AngelHack
 
-SANITY CHECK 11/12 May
-It is 4.53pm and i have started working on this
-It is 5.30pm and i have just restored the linking between pages,,, this was simply done by adding router.get methods into index.js hehe
-It is 5.49pm and im learning how to store secrets securely
-It is 10.45pm and i just figured out how to connect to the database
-It is 10.54pm and i just got the authentication to work!! :D
-It is 11.34pm and i just configured the sql table to accommodate SHA256 salts
-It is 12.09am and i just managed to get registration to insert entries into the cloud sql server :D
-It is 12.36am and logging in and registration breaks the website... :(
+SANITY CHECK 12 May
+It is 2.57pm and I have just started work
 
 IMPT SQL COMMANDS
 USE {database name}
