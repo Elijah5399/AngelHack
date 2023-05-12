@@ -1,18 +1,20 @@
 var express = require("express");
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
+var session = require("express-session");
 var crypto = require("crypto");
-
 var router = express.Router();
-const mysql = require("mysql");
+const mysql = require("mysql2");
 
 //here we use the environment variables declared in the .env files to establish a connection to the SQL database
-let connection = mysql.createConnection({
+const options = {
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
-  database: process.env.DB_DATABASE,
   password: process.env.DB_PASS,
-});
+  database: process.env.DB_DATABASE,
+};
+
+const connection = mysql.createConnection(options); // or mysql.createPool(options);
 
 connection.connect(function (err) {
   if (err) {
@@ -26,7 +28,7 @@ connection.connect(function (err) {
 passport.use(
   new LocalStrategy(function verify(username, password, cb) {
     connection.query(
-      "SELECT * FROM users WHERE username = ?",
+      process.env.SQL_FOR_OBTAINING_USER,
       [username],
       function (err, result) {
         if (err) {
@@ -105,7 +107,7 @@ router.post("/registration", function (req, res, next) {
         return next(err);
       }
       connection.query(
-        "INSERT INTO users (username, hashed_password, salt) VALUES (?, ?, ?)",
+        process.env.SQL_FOR_INSERTING_USER,
         [req.body.username, hashedPassword, salt],
         function (err, results) {
           if (err) {

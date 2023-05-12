@@ -3,6 +3,7 @@
 SANITY CHECK 12 May
 It is 2.57pm and I have just started work
 It is 5.08pm and I just got logins to work by changing the SQL data types :D
+It is 10.33pm and I just got logins and registrations to work :DDDD
 
 IMPT SQL COMMANDS
 USE {database name}
