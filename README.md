@@ -16,6 +16,8 @@ Current issues:
 
 4. Add logout functionality
 
+5. Fix login: wrong username breaks the website
+
 USEFUL LINKS
 
 https://getbootstrap.com/docs/4.1/getting-started/introduction/
