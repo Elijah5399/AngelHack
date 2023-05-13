@@ -68,7 +68,11 @@
         </a>
       </nav>
       <!-- End of top navbar-->
+
+
       <main id="main">
+
+
         <!-- Side navbar, use list items for each topic-->
         <div class="wrapper">
           <nav id="sidebar" class="navbar-light bg-light">
@@ -104,6 +108,7 @@
             </button>
           </nav>
         </div>
+
         <!-- End of side navbar, start of displayed contents-->
         <div class="container-fluid bootstrap-override" id="right-container">
           <div class="container-fluid m-0 pl-4 pr-4 pt-1" id="content">
@@ -124,18 +129,38 @@
               content that overflows.
             </p>
           </div>
+
+
+
+
           <!-- End of contents, start of comments-->
+
           <div
             class="container-fluid bg-info text-light m-0 pl-4 pr-4 pt-2"
-            id="comments"
-          >
-            <h4>Responses (1)</h4>
-            <p>What a shitty article, lorem ipsum this lorem ipsum that</p>
+            id="comments">
+            <form>
+              <label for="commentsBox" class="form-label ">Comments box</label>
+              <textarea class="form-control" id="commentsBox" rows="3" maxlength="150" placeholder="Leave a comment..."></textarea>
+              <button type="submit" class="btn btn-success postbtn">POST COMMENT</button>
+            </form>
+            <div class="d-flex justify-content-end">
+              <select class="form-control" style="width:auto" id="sortingCriteria">
+                <option>Newest</option>
+                <option>Popular</option>
+              </select>
+            </div>
           </div>
+
           <!-- End of comments-->
+
         </div>
+
         <!-- End of contents -->
+
       </main>
+
+      <!-- End of page -->
+
     </div>
     <!--Some bootstrap components require these js scripts to function-->
     <script

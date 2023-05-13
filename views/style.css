@@ -35,8 +35,9 @@
 #right-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
 }
 
-#comments {
+.postbtn {
+  top:100px;
 }
