@@ -64,7 +64,7 @@
           <!--Insert logo here-->
           <!-- <img class="mb-4" src="" alt="" width="72" height="57" /> -->
           <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
+          <p class="text-danger" style="font-size:12px;">Log in failed! Wrong username or password</p>
           <div class="form-floating">
             <input
               type="text"
@@ -73,6 +73,7 @@
               placeholder="Username"
               name="username"
               autocomplete="off"
+              required
             />
             <label for="floatingInput">Username</label>
           </div>
@@ -83,6 +84,7 @@
               class="form-control"
               id="floatingPassword"
               placeholder="Password"
+              required
             />
             <label for="floatingPassword">Password</label>
           </div>
