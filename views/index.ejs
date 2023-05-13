@@ -117,23 +117,22 @@
               breakdown of how to start your financial journey!
             </p>
             <!-- FOR FUTURE CARD BASED CONTENT -->
-            <p>
-              Under code editor, write without the quotes "(p>lorem)*20" and
-              press tab to generate placeholder and see how it looks like with
-              content that overflows.
-            </p>
           </div>
           <!-- End of contents, start of comments-->
 
           <div class="container-fluid m-0 mt-2 pl-4 pr-4 pt-2" id="comments">
-            <div style="border-bottom-width:1px; border-bottom-style:solid; border-bottom-color:rgb(204,204,204); margin-bottom:30px;"></div>
+            <div class="line"></div>
             <form style="margin-bottom:15px;">
               <textarea class="form-control" id="commentsBox" rows="3" maxlength="300" placeholder="Leave a comment..."></textarea>
-              <button type="submit" class="btn btn-success postbtn" style="margin-top:10px; width:auto; font-size:10px;">POST COMMENT</button>
+              <button type="submit" class="btn btn-success" id="postbtn">POST COMMENT</button>
+<!--              <textarea class="form-control" id="commentsBox" rows="3" placeholder="You have to be logged in to comment..." disabled></textarea>-->
+<!--              <button type="submit" class="btn btn-secondary" id="postbtn" disabled>POST COMMENT</button>-->
             </form>
-            <div class="d-flex justify-content-between" style="border-bottom-width:1px; border-bottom-style:solid; border-bottom-color:rgb(204,204,204); margin-bottom:30px;">
+
+
+            <div class="d-flex justify-content-between line">
               <p style="margin-bottom: 9px; position:relative; top:10px; border-bottom:2px solid #00b38f"> <span>0</span> Comments</p>
-              <select class="form-control" style="width:auto; border-bottom:2px solid rgb(119,119,119)" id="sortingCriteria">
+              <select class="form-control" style="width:auto; border-bottom:2px solid rgb(50,50,50)" id="sortingCriteria">
                 <option>Newest</option>
                 <option>Popular</option>
               </select>

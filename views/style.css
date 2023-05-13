@@ -38,6 +38,26 @@
   /*justify-content: space-between;*/
 }
 
-.postbtn {
+#postbtn {
   top:100px;
+  margin-top:10px;
+  width:auto;
+  font-size:10px;
 }
+
+.line {
+  border-bottom-width:1px;
+  border-bottom-style:solid;
+  border-bottom-color:rgb(204,204,204);
+  margin-bottom:30px;
+}
+
+#commentsBox {
+  transition: 0.5s;
+}
+
+#commentsBox:not([disabled]):hover, #commentsBox:not([disabled]):focus {
+  background-color: rgb(230,230,230);
+  transition: 0.3s;
+}
+
