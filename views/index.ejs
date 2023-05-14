@@ -55,7 +55,8 @@
             </li>
           </ul>
         </div>
-        <!--Profile pic with link to login.html-->
+        <% if (!user) { %>
+        <!--Profile pic with link to login.html if user is logged out-->
         <a href="/login">
           <img
             class="float-right profileicon"
@@ -65,6 +66,14 @@
             height="40"
           />
         </a>
+        <% } else { %>
+        <!-- Remove everything in this else block when we have a proper logout and profile icon -->
+        <p>Currently logged in as: <%= user.username %></p>
+        <!-- If not logged in show them the signout button (TODO)-->
+        <form action="/logout" method="post">
+          <button class="logout" type="submit">Sign out</button>
+        </form>
+        <% } %>
       </nav>
       <!-- End of top navbar-->
       <main id="main">
@@ -122,17 +131,55 @@
 
           <div class="container-fluid m-0 mt-2 pl-4 pr-4 pt-2" id="comments">
             <div class="line"></div>
-            <form style="margin-bottom:15px;">
-              <textarea class="form-control" id="commentsBox" rows="3" maxlength="300" placeholder="Leave a comment..."></textarea>
-              <button type="submit" class="btn btn-success" id="postbtn">POST COMMENT</button>
-<!--              <textarea class="form-control" id="commentsBox" rows="3" placeholder="You have to be logged in to comment..." disabled></textarea>-->
-<!--              <button type="submit" class="btn btn-secondary" id="postbtn" disabled>POST COMMENT</button>-->
+            <!-- tell the user they need to login to comment-->
+            <% if (!user) { %>
+            <textarea
+              class="form-control"
+              id="commentsBox"
+              rows="3"
+              placeholder="You have to be logged in to comment..."
+              disabled
+            ></textarea>
+            <button
+              type="submit"
+              class="btn btn-secondary"
+              id="postbtn"
+              disabled
+            >
+              POST COMMENT
+            </button>
+
+            <% } else { %>
+
+            <form style="margin-bottom: 15px">
+              <textarea
+                class="form-control"
+                id="commentsBox"
+                rows="3"
+                maxlength="300"
+                placeholder="Leave a comment..."
+              ></textarea>
+              <button type="submit" class="btn btn-success" id="postbtn">
+                POST COMMENT
+              </button>
             </form>
-
-
+            <% } %>
             <div class="d-flex justify-content-between line">
-              <p style="margin-bottom: 9px; position:relative; top:10px; border-bottom:2px solid #00b38f"> <span>0</span> Comments</p>
-              <select class="form-control" style="width:auto; border-bottom:2px solid rgb(50,50,50)" id="sortingCriteria">
+              <p
+                style="
+                  margin-bottom: 9px;
+                  position: relative;
+                  top: 10px;
+                  border-bottom: 2px solid #00b38f;
+                "
+              >
+                <span>0</span> Comments
+              </p>
+              <select
+                class="form-control"
+                style="width: auto; border-bottom: 2px solid rgb(50, 50, 50)"
+                id="sortingCriteria"
+              >
                 <option>Newest</option>
                 <option>Popular</option>
               </select>
@@ -140,15 +187,12 @@
           </div>
 
           <!-- End of comments-->
-
         </div>
 
         <!-- End of contents -->
-
       </main>
 
       <!-- End of page -->
-
     </div>
     <!--Some bootstrap components require these js scripts to function-->
     <script
