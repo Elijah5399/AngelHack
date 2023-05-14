@@ -42,14 +42,14 @@ body {
 
 #specialEffects ul li {
   position: absolute;
-  width:35px;
-  height:35px;
-  list-style:none;
-  opacity:0;
-  background:radial-gradient(MediumSlateBlue,transparent,transparent);
-  bottom:0;
-  left:10vw;
-  animation: animate 8s linear infinite;
+  width: 35px;
+  height: 35px;
+  list-style: none;
+  opacity: 0;
+  background: radial-gradient(MediumSlateBlue, transparent, transparent);
+  bottom: 0;
+  left: 10vw;
+  animation: animate 6s linear infinite;
   z-index: -1;
 }
 
@@ -66,9 +66,9 @@ body {
   animation-delay: 4s;
 }
 #specialEffects ul li:nth-child(5) {
-   left: 74vw;
-   animation-delay: 5s;
- }
+  left: 74vw;
+  animation-delay: 5s;
+}
 #specialEffects ul li:nth-child(6) {
   left: 19vw;
   animation-delay: 6s;
@@ -79,14 +79,14 @@ body {
 }
 
 @keyframes animate {
-  0%{
-    transform:scale(0);
-    opacity:1;
-    bottom:0;
+  0% {
+    transform: scale(0);
+    opacity: 1;
+    bottom: 0;
   }
-  100%{
-    transform:scale(10);
-    opacity:0;
-    bottom:100vh;
+  100% {
+    transform: scale(10);
+    opacity: 0;
+    bottom: 100vh;
   }
 }

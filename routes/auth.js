@@ -34,7 +34,7 @@ passport.use(
         if (err) {
           return cb(err);
         }
-        if (!result) {
+        if (!result || !result[0]) {
           return cb(null, false, {
             message: "Incorrect username or password.",
           });
@@ -56,7 +56,7 @@ passport.use(
                 message: "Incorrect username or password.",
               });
             }
-            return cb(null, result);
+            return cb(null, result[0]);
           }
         );
       }
@@ -76,11 +76,35 @@ passport.deserializeUser(function (user, cb) {
 });
 
 router.get("/login", function (req, res, next) {
-  res.render("login");
+  if (!req.session.messages) {
+    res.locals.hasFailed = false;
+  } else {
+    res.locals.hasFailed = true;
+  }
+  if (!req.user) {
+    res.render("login");
+  } else {
+    res.locals.user = req.user;
+    res.render("index");
+  }
+});
+
+router.post("/logout", function (req, res, next) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/login");
+  });
 });
 
 router.get("/registration", function (req, res, next) {
-  res.render("registration");
+  if (req.user) {
+    res.locals.user = req.user;
+    res.render("index");
+  } else {
+    res.render("registration");
+  }
 });
 
 //redirects a person to the home page if their password is correct, and brings them back
@@ -88,9 +112,16 @@ router.get("/registration", function (req, res, next) {
 router.post(
   "/login/password",
   passport.authenticate("local", {
-    successRedirect: "/",
     failureRedirect: "/login",
-  })
+    failureMessage: true,
+  }),
+  //if authentication succeeds, passport.authenticate() middleware calls the next function in the stack.
+  //we now want to redirect them to index page with their username stored!
+  //here the req has all the sql table values for that row
+
+  function (req, res) {
+    res.redirect("/");
+  }
 );
 
 //this function handles registration of new users
@@ -117,12 +148,13 @@ router.post("/registration", function (req, res, next) {
             id: results.id,
             username: req.body.username,
           };
-          //TODO: address the issue of login not working as session is not used :(
           req.login(user, function (err) {
             if (err) {
               return next(err);
+            } else {
+              //res.locals.user = user;
+              res.redirect("/");
             }
-            res.redirect("/");
           });
         }
       );

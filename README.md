@@ -6,17 +6,28 @@ SHOW TABLES
 SELECT \* FROM {table}
 SHOW COLUMNS in {table}
 
+NOTE TO SELF:
+Hosting a website on google cloud:
+
+-create a compute engine instance
+
+-get the ip address of the instance
+
+-make the ip address static by reserving it
+
+-Go to cloud services > cloud DNS, create zone. Enter any zone name. For DNS name, enter the domain name without any prefix, e.g. example.com and not www.example.com (need to have a DNS name beforehand)
+
 Current issues:
 
-~~1. link all irrelevant HTTP requests to a 404 page~~
+1. Change icon from profilepic2 to showing username + logout button when user is logged in
 
-2. Display "Incorrect username or password" message when an incorrect username/password is entered
+2a. Make comment system looks nicer; maybe have a few dummy comments for each subtopic?
 
-3. Change icon from profilepic2 to showing username + logout button when user is logged in
+2b. Create database of comments for each subtopic and link code with database
 
-4. Add logout functionality
+3. COME UP WITH CONTENT!!!!
 
-5. Fix login: wrong username breaks the website
+4. Make icon and change website name
 
 USEFUL LINKS
 
