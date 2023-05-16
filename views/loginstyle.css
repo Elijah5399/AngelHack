@@ -90,3 +90,25 @@ body {
     bottom: 100vh;
   }
 }
+
+#message {
+  display: none;
+  position: relative;
+  left: 105%;
+  top: -80px;
+}
+
+#message > div {
+  position:absolute;
+  font-size:10px;
+  text-align:left;
+}
+
+#message > div > p {
+  margin: 0;
+}
+
+.valid {
+  color: green;
+}
+

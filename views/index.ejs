@@ -68,10 +68,10 @@
         </a>
         <% } else { %>
         <!-- Remove everything in this else block when we have a proper logout and profile icon -->
-        <p>Currently logged in as: <%= user.username %></p>
+        <p class="mb-0" style="margin-right:5px;">Currently logged in as: <%= user.username %></p>
         <!-- If not logged in show them the signout button (TODO)-->
         <form action="/logout" method="post">
-          <button class="logout" type="submit">Sign out</button>
+          <input class="logout"  type="image" src="icons8-logout-50.png" onmouseover="this.src='icons8-logout.gif'" onmouseout="this.src='icons8-logout-50.png'">
         </form>
         <% } %>
       </nav>
