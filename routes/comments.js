@@ -83,7 +83,7 @@ function getComments(postID) {
   comments = null;
   connection.query(
     process.env.SQL_FOR_RETRIEVING_COMMENTS,
-    [postID],
+    [postID.toString()],
     function (err, results) {
       if (err) {
         console.log("Error connecting: " + err.stack);
