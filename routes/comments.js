@@ -79,30 +79,41 @@ router.post("/topic3/postComment", function (req, res, next) {
   res.render("topic3", { user: req.user });
 });
 
-function getComments(postID) {
-  console.log("postID is: " + JSON.stringify(postID));
-  comments = null;
+async function getComments(postID) {
+  const comments = null;
   connection.query(
     process.env.SQL_FOR_RETRIEVING_COMMENTS,
     [postID.toString()],
     function (err, results) {
       if (err) {
-        console.log("Error connecting: " + err.stack);
-        return;
-      }
-      console.log("Contents are: " + results.toString());
-      console.log("Enumerating objects: ");
-      for (var i = 0; i < results.length; i++) {
-        console.log(JSON.stringify(results[i]));
+        console.log("error getting comments: " + err.stack);
       }
       comments = results;
+      //Line B
+      //successCallback(results);
     }
   );
-  return comments;
+  //Line A
 }
 
+/*
+function getCommentsWrapper(postID) {
+  return new Promise((resolve, reject) => {
+    getComments(
+      postID,
+      (successResponse) => {
+        resolve(successResponse);
+      },
+      (errorResponse) => {
+        reject(errorResponse);
+      }
+    );
+  });
+}
+*/
+
 module.exports = router;
-module.exports = getComments;
+module.exports = getCommentsWrapper;
 
 /* 
 Post format in req.body:

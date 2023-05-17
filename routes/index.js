@@ -1,10 +1,11 @@
 var express = require("express");
-var getComments = require("./comments");
+var getCommentsWrapper = require("./comments");
 var router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.locals.comments = getComments(0);
+  res.locals.getCommentsWrapper = getCommentsWrapper;
+
   if (!req.user) {
     res.locals.user = null;
     res.render("index");
