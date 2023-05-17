@@ -20,7 +20,6 @@ connection.connect(function (err) {
   }
   console.log("Connected to the commentsLikes database!");
 });
-
 router.post("/postComment", function (req, res, next) {
   //Use an SQL query to insert the comment into the DB
   connection.query(process.env.SQL_FOR_INSERTING_COMMENT, [
@@ -33,7 +32,51 @@ router.post("/postComment", function (req, res, next) {
   ]);
 
   //on posting a comment, user is redirected to main page ??
-  res.render("index", { user: req.user });
+  res.render("topic1", { user: req.user });
+});
+router.post("/topic1/postComment", function (req, res, next) {
+  //Use an SQL query to insert the comment into the DB
+  connection.query(process.env.SQL_FOR_INSERTING_COMMENT, [
+    req.body.postDist,
+    null,
+    req.body.commentContent,
+    req.body.dateTime,
+    0,
+    req.body.userPosted,
+  ]);
+
+  //on posting a comment, user is redirected to main page ??
+  res.render("topic1", { user: req.user });
+});
+
+router.post("/topic2/postComment", function (req, res, next) {
+  //Use an SQL query to insert the comment into the DB
+  connection.query(process.env.SQL_FOR_INSERTING_COMMENT, [
+    req.body.postDist,
+    null,
+    req.body.commentContent,
+    req.body.dateTime,
+    0,
+    req.body.userPosted,
+  ]);
+
+  //on posting a comment, user is redirected to main page ??
+  res.render("topic2", { user: req.user });
+});
+
+router.post("/topic3/postComment", function (req, res, next) {
+  //Use an SQL query to insert the comment into the DB
+  connection.query(process.env.SQL_FOR_INSERTING_COMMENT, [
+    req.body.postDist,
+    null,
+    req.body.commentContent,
+    req.body.dateTime,
+    0,
+    req.body.userPosted,
+  ]);
+
+  //on posting a comment, user is redirected to main page ??
+  res.render("topic3", { user: req.user });
 });
 
 function getComments(postID) {
@@ -43,7 +86,7 @@ function getComments(postID) {
     [postID],
     function (err, results) {
       if (err) {
-        console.error("Error connecting: " + err.stack);
+        console.log("Error connecting: " + err.stack);
         return;
       }
       console.log("Results from SQL Query are: " + results);
