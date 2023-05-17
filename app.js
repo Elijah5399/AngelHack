@@ -5,6 +5,7 @@ var path = require("path");
 var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var authRouter = require("./routes/auth");
+var commentsRouter = require("./routes/comments");
 var session = require("express-session");
 const mysql = require("mysql2");
 var passport = require("passport");
@@ -60,9 +61,9 @@ sessionStore
 app.use(passport.authenticate("session"));
 //establish linkage with index.js and auth.js so their .get and .post methods can be used
 app.use("/", indexRouter);
+app.use("/", commentsRouter);
 app.use("/", authRouter);
-//app.use(passport.initialize());
-//app.use(passport.session());
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

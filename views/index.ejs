@@ -98,20 +98,17 @@
                 >
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                   <li>
-                    <a href="#budgetting" onclick="topic1()" id="budgetting"
+                    <a href="#" onclick="topic1()" id="budgetting"
                       >Budgetting</a
                     >
                   </li>
                   <li>
-                    <a
-                      href="#income-and-expenses"
-                      onclick="topic2()"
-                      id="income-and-expenses"
+                    <a href="#" onclick="topic2()" id="income-and-expenses"
                       >Income and Expenses</a
                     >
                   </li>
                   <li>
-                    <a href="#saving" onclick="topic3()" id="saving">Saving</a>
+                    <a href="#" onclick="topic3()" id="saving">Saving</a>
                   </li>
                 </ul>
               </li>
@@ -164,14 +161,26 @@
 
             <% } else { %>
 
-            <form style="margin-bottom: 15px">
+            <form
+              style="margin-bottom: 15px"
+              action="/postComment"
+              method="post"
+            >
               <textarea
                 class="form-control"
                 id="commentsBox"
                 rows="3"
                 maxlength="300"
                 placeholder="Leave a comment..."
+                name="commentContent"
               ></textarea>
+              <!-- This input field represents which subtopic the user is currently on! -->
+              <input
+                type="hidden"
+                id="postDistinguisher"
+                name="postDist"
+                value="0"
+              />
               <button type="submit" class="btn btn-success" id="postbtn">
                 POST COMMENT
               </button>
@@ -203,9 +212,7 @@
                 <div class="card" style="margin-bottom: 20px">
                   <div class="card-body">
                     <div>
-                      <h6 class="fw-bold text-primary mb-1">
-                        <%=user.username%>
-                      </h6>
+                      <h6 class="fw-bold text-primary mb-1">ElijahsMom</h6>
                       <p class="text-muted small mb-0">
                         March 27, 2023 12:38 am
                       </p>
@@ -224,9 +231,7 @@
                 <div class="card" style="margin-bottom: 20px">
                   <div class="card-body">
                     <div>
-                      <h6 class="fw-bold text-primary mb-1">
-                        <%=user.username%>
-                      </h6>
+                      <h6 class="fw-bold text-primary mb-1">ElijahsDad</h6>
                       <p class="text-muted small mb-0">
                         February 69, 2027 00:78 pm
                       </p>
