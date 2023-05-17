@@ -61,7 +61,6 @@ sessionStore
 app.use(passport.authenticate("session"));
 //establish linkage with index.js and auth.js so their .get and .post methods can be used
 app.use("/", indexRouter);
-app.use("/", commentsRouter);
 app.use("/", authRouter);
 
 // catch 404 and forward to error handler

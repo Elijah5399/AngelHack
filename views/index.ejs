@@ -222,11 +222,7 @@
 
             <div class="row d-flex justify-content-center">
               <div class="col-md-12 col-lg-10 col-xl-8">
-                <!-- Comment format: "post_id":0,"parent_comment_id":null,"content":"www","time_posted":"2023-05-17T07:09:06.000Z","likes":0,"username":"Urmama","comment_id":1}-->
-
-                <% async function getCommentsFr() { const comments = await
-                getCommentsWrapper(0); for (var i = 0; i < comments.length; i++)
-                { %>
+                <% for (var i = 0; i < comments.length; i++) { %>
                 <div class="card" style="margin-bottom: 20px">
                   <div class="card-body">
                     <div>
@@ -267,7 +263,7 @@
                     </div>
                   </div>
                 </div>
-                <% }} getCommentsFr(); %> <%# End of template content %>
+                <% } %> <%# End of template content %>
               </div>
               <!-- This is the end of the comment thread -->
             </div>
