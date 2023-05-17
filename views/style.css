@@ -39,36 +39,38 @@
 }
 
 #postbtn {
-  top:100px;
-  margin-top:10px;
-  width:auto;
-  font-size:10px;
+  top: 100px;
+  margin-top: 10px;
+  width: auto;
+  font-size: 10px;
 }
 
 .line {
-  border-bottom-width:1px;
-  border-bottom-style:solid;
-  border-bottom-color:rgb(204,204,204);
-  margin-bottom:30px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(204, 204, 204);
+  margin-bottom: 30px;
 }
 
 #commentsBox {
   transition: 0.5s;
 }
 
-#commentsBox:not([disabled]):hover, #commentsBox:not([disabled]):focus {
-  background-color: rgb(230,230,230);
+#commentsBox:not([disabled]):hover,
+#commentsBox:not([disabled]):focus {
+  background-color: rgb(230, 230, 230);
   transition: 0.3s;
 }
 
 .logout {
-  height:20px;
-  margin-top:5px;
+  height: 20px;
+  margin-top: 5px;
 }
 
-img[src="fire.png"], input[src="fire.png"] {
-  height:20px;
-  width:20px;
+img[src="fire.png"],
+input[src="fire.png"] {
+  height: 20px;
+  width: 20px;
   margin-left: 5px;
   filter: grayscale(100%);
 }
@@ -85,5 +87,4 @@ img[src="fire.png"], input[src="fire.png"] {
   font: inherit;
   cursor: pointer;
   outline: inherit;
-}
 }
