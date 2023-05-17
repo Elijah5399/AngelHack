@@ -80,7 +80,7 @@
               onmouseout="this.src='icons8-logout-50.png'"
             />
           </form>
-      </div>
+        </div>
         <% } %>
       </nav>
       <!-- End of top navbar-->
@@ -183,6 +183,18 @@
                 name="postDist"
                 value="0"
               />
+              <input
+                type="hidden"
+                id="dateTracker"
+                name="dateTime"
+                value="<%= new Date().toISOString().slice(0, 19).replace('T', ' ') %>"
+              />
+              <input
+                type="hidden"
+                id="nameTracker"
+                name="userPosted"
+                value="<%= user.username %>"
+              />
               <button type="submit" class="btn btn-success" id="postbtn">
                 POST COMMENT
               </button>
@@ -224,17 +236,29 @@
                       switch between topics
                     </p>
                     <div class="d-flex justify-content-end">
-
                       <% if (!user) { %>
                       <div class="d-flex">
                         <p>0 (or whatever server number)</p>
-                        <img src="fire.png" onclick="alert('willcreateaspecialpopup asking people to signin')"/>
+                        <img
+                          src="fire.png"
+                          onclick="alert('willcreateaspecialpopup asking people to signin')"
+                        />
                       </div>
                       <% } else { %>
-                        <form method="POST" onsubmit="return false;" id="" class="d-flex">
-                          <p class="mb-0 likesCount">0</p>
-                          <input type="image" src="fire.png" class="voteButton inactive" alt="vote"/>
-                        </form>
+                      <form
+                        method="POST"
+                        onsubmit="return false;"
+                        id=""
+                        class="d-flex"
+                      >
+                        <p class="mb-0 likesCount">0</p>
+                        <input
+                          type="image"
+                          src="fire.png"
+                          class="voteButton inactive"
+                          alt="vote"
+                        />
+                      </form>
                       <% } %>
                     </div>
                   </div>
@@ -252,15 +276,28 @@
 
                     <div class="d-flex justify-content-end">
                       <% if (!user) { %>
-                        <div class="d-flex">
-                          <p>3</p>
-                          <img src="fire.png" onclick="alert('guessWhoYourMumSawLastNight')"/>
-                        </div>
+                      <div class="d-flex">
+                        <p>3</p>
+                        <img
+                          src="fire.png"
+                          onclick="alert('guessWhoYourMumSawLastNight')"
+                        />
+                      </div>
                       <% } else { %>
-                        <form method="POST" onsubmit="return false;" id="" class="d-flex">
-                          <p class="mb-0 likesCount">4</p>
-                          <input type="image" src="fire.png" class="voteButton inactive" alt="vote"/>
-                        </form>
+                      <form
+                        method="POST"
+                        onsubmit="return false;"
+                        id=""
+                        class="d-flex"
+                      >
+                        <p class="mb-0 likesCount">4</p>
+                        <input
+                          type="image"
+                          src="fire.png"
+                          class="voteButton inactive"
+                          alt="vote"
+                        />
+                      </form>
                       <% } %>
                     </div>
                   </div>
@@ -281,23 +318,7 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
-    <script>
-      let likesCount = document.getElementsByClassName("likesCount");
-      let voteButton = document.getElementsByClassName("voteButton");
-      for (let i = 0; i < voteButton.length; i++) {
-        voteButton[i].addEventListener("click", function () {
-          if (this.classList.contains("inactive")) {
-            voteButton[i].classList.remove("inactive");
-            let currentInt = parseInt(likesCount[i].innerHTML);
-            likesCount[i].innerHTML = `${currentInt + 1}`;
-          } else {
-            voteButton[i].classList.add("inactive");
-            let currentInt = parseInt(likesCount[i].innerHTML);
-            likesCount[i].innerHTML = `${currentInt - 1}`;
-          }
-        });
-      }
-    </script>
+    <script src="buttonLogic.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
