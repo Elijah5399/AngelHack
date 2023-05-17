@@ -77,6 +77,8 @@
               placeholder="Username"
               name="username"
               autocomplete="off"
+              minlength="6"
+              maxlength="30"
               required
             />
             <label for="floatingInput">Username</label>
@@ -88,15 +90,33 @@
               id="floatingPassword"
               placeholder="Password"
               name="password"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$"
               required
             />
             <label for="floatingPassword">Password</label>
+          </div>
+          <div id="message">
+            <div>
+              <p>Password must contain the following:</p>
+              <p id="letter"><b>Lowercase</b> letter</p>
+              <p id="capital"><b>Uppercase</b> letter</p>
+              <p id="number"><b>Number</b></p>
+              <p id="length">Minimum <b>8 characters</b></p>
+            </div>
           </div>
 
           <button class="w-100 btn btn-lg btn-primary" type="submit">
             Create account
           </button>
         </form>
+
+        <div>
+          <p>
+            Have an account?
+            <a href="/login">Log in</a>
+          </p>
+        </div>
+
         <div id="specialEffects">
           <ul>
             <li></li>
@@ -116,6 +136,46 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"
       ></script>
+      <script>
+        let input = document.getElementById('floatingPassword');
+        let letter = document.getElementById("letter");
+        let capital = document.getElementById("capital");
+        let number = document.getElementById("number");
+        let length = document.getElementById("length");
+
+        input.onfocus = function() {
+          document.getElementById("message").style.display = "block";
+        }
+        input.onblur = function() {
+          document.getElementById("message").style.display = "none";
+        }
+        input.onkeyup = function() {
+          let lowerCaseLetters = /[a-z]/g;
+          if(input.value.match(lowerCaseLetters)) {
+            letter.classList.add("valid");
+          } else {
+            letter.classList.remove("valid");
+          }
+          let upperCaseLetters = /[A-Z]/g;
+          if(input.value.match(upperCaseLetters)) {
+            capital.classList.add("valid");
+          } else {
+            capital.classList.remove("valid");
+          }
+          let numbers = /[0-9]/g;
+          if(input.value.match(numbers)) {
+            number.classList.add("valid");
+          } else {
+            number.classList.remove("valid");
+          }
+          if(input.value.length >= 8) {
+            length.classList.add("valid");
+          } else {
+            length.classList.remove("valid");
+          }
+        }
+
+      </script>
     </body>
   </div>
 </html>
