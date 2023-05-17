@@ -19,9 +19,7 @@ Hosting a website on google cloud:
 
 Current issues:
 
-1. Change icon from profilepic2 to showing username + logout button when user is logged in
-
-2a. Make comment system looks nicer; maybe have a few dummy comments for each subtopic?
+1. To create DB and tables for comments and link it to the app
 
 2b. Create database of comments for each subtopic and link code with database
 

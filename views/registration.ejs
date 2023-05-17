@@ -64,7 +64,11 @@
           <!--Insert logo here-->
           <!-- <img class="mb-4" src="" alt="" width="72" height="57" /> -->
           <h1 class="h3 mb-3 fw-normal">Make an account</h1>
-
+          <% if (dupUser) { %>
+          <p class="text-danger" style="font-size: 12px">
+            Registration failed! This username is already taken!
+          </p>
+          <% } %>
           <div class="form-floating">
             <input
               type="text"

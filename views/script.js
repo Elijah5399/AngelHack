@@ -1,62 +1,59 @@
-const container = document.querySelector('#content');
+const container = document.querySelector("#content");
 const initialText = container.innerHTML;
 
 function backToTop() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 
 function home() {
-    container.innerHTML = initialText;
+  container.innerHTML = initialText;
 }
 
-function about() {
+function about() {}
 
-}
+function help() {}
 
-function help() {
-
-}
-
-function contact() {
-
-}
+function contact() {}
 
 function topic1() {
-    container.innerHTML = "<h2><strong>Budgeting</strong></h2>" +
-        "<h3>Introduction</h3>" +
-        "<p>Hey there, fellow young Singaporeans! Are you ready to take charge of your financial future? Budgeting is a crucial skill that will help you manage your money wisely and achieve your financial goals. In this guide, we'll walk you through the ins and outs of budgeting. So, grab a cup of kopi, find a cozy spot, and let's embark on this exciting journey of financial empowerment!</p>" +
-        "<h3>Understanding Your Income</h3>" +
-        "<p>The first step in budgeting is gaining a clear understanding of your income. It's not just about your regular paycheck! Consider any part-time jobs, freelance gigs, or side hustles that contribute to your overall earnings. By knowing your total income, you'll be better equipped to plan your budget effectively.</p>" +
-        "<h3>Tracking Your Expenses</h3>" +
-        "<p>Now, let's talk about expenses—the notorious spending habits that impact our financial well-being. It's essential to track where your hard-earned money goes. There are numerous apps and tools available to simplify expense tracking. For instance:</p>" +
-        "<ol>" +
-        "<li><a href='https://www.spendee.com/'>Spendee</a>: This intuitive expense tracker allows you to categorize your spending, set budgets, and gain insights into your financial habits. It's like having a personal finance assistant in your pocket!</li>" +
-        "<li><a href='https://www.pocketsmith.com/'>PocketSmith</a>: With PocketSmith, you can effortlessly track your expenses, visualize your cash flow, and even forecast future financial scenarios. It's an excellent tool for those who appreciate detailed financial planning.</li>" +
-        "</ol>" +
-        "<h3>Setting Realistic Goals</h3>" +
-        "<p>Budgeting becomes more meaningful and motivating when you have clear goals to work towards. Set both short-term and long-term financial objectives. Here are a few examples:</p>" +
-        "<ol>" +
-        "<li>Short-term goals: Building an emergency fund, paying off credit card debt, saving for a dream vacation, or purchasing a new gadget.</li>" +
-        "<li>Long-term goals: Saving for a down payment on a home, funding your retirement, investing in stocks or real estate, or starting your own business.</li>" +
-        "</ol>" +
-        "<p>Remember to make your goals SMART—Specific, Measurable, Achievable, Relevant, and Time-bound. This framework will help you stay focused and motivated on your financial journey.</p>" +
-        "<h3>Creating Your Budget</h3>" +
-        "<p>Now comes the fun part—creating your budget! Begin by allocating a portion of your income to cover essential expenses like rent, groceries, utilities, and transportation. Next, determine how much you want to save and invest towards your financial goals. Finally, set aside an amount for discretionary spending, allowing yourself guilt-free enjoyment. Flexibility is key, so adjust your budget as your circumstances change.</p>" +
-        "<h3>Budgeting Tools and Resources</h3>" +
-        "<p>To simplify your budgeting journey, explore these alternative tools and resources:</p>" +
-        "<ol>" +
-        "<li><a href='https://www.youneedabudget.com/'>YNAB (You Need a Budget)</a>: YNAB is a popular budgeting app that focuses on providing a clear understanding of your money and helping you make informed financial decisions.</li>" +
-        "<li><a href='https://toshl.com/'>Toshl Finance</a>: Toshl Finance is a feature-rich app that allows you to track expenses, set budgets, and gain insights into your spending habits. It also integrates with various banks, making expense tracking more convenient. With Toshl Finance, you'll have a powerful tool at your fingertips to manage your finances effectively.</li>" +
-        "</ol>" +
-        "<h3>Conclusion</h3>" +
-        "<p>Congratulations on taking the first step towards financial independence and empowerment! By mastering the art of budgeting, you're setting yourself up for a bright financial future. Remember, budgeting is a continuous process that requires discipline and flexibility. Regularly review your budget, track your expenses, and make adjustments as necessary. Explore the recommended tools and resources or find alternatives that suit your preferences. Stay committed, stay focused, and watch your financial goals become a reality. Best of luck on your budgeting journey, young Singaporeans!</p>" +
-        "<p>(Note: The provided links are examples and may change or evolve over time. It's always recommended to do your own research and choose the tools and resources that best fit your needs.)</p>";
-        }
+  document.querySelector("#postDistinguisher").setAttribute("value", "1");
 
+  container.innerHTML =
+    "<h2><strong>Budgeting</strong></h2>" +
+    "<h3>Introduction</h3>" +
+    "<p>Hey there, fellow young Singaporeans! Are you ready to take charge of your financial future? Budgeting is a crucial skill that will help you manage your money wisely and achieve your financial goals. In this guide, we'll walk you through the ins and outs of budgeting. So, grab a cup of kopi, find a cozy spot, and let's embark on this exciting journey of financial empowerment!</p>" +
+    "<h3>Understanding Your Income</h3>" +
+    "<p>The first step in budgeting is gaining a clear understanding of your income. It's not just about your regular paycheck! Consider any part-time jobs, freelance gigs, or side hustles that contribute to your overall earnings. By knowing your total income, you'll be better equipped to plan your budget effectively.</p>" +
+    "<h3>Tracking Your Expenses</h3>" +
+    "<p>Now, let's talk about expenses—the notorious spending habits that impact our financial well-being. It's essential to track where your hard-earned money goes. There are numerous apps and tools available to simplify expense tracking. For instance:</p>" +
+    "<ol>" +
+    "<li><a href='https://www.spendee.com/'>Spendee</a>: This intuitive expense tracker allows you to categorize your spending, set budgets, and gain insights into your financial habits. It's like having a personal finance assistant in your pocket!</li>" +
+    "<li><a href='https://www.pocketsmith.com/'>PocketSmith</a>: With PocketSmith, you can effortlessly track your expenses, visualize your cash flow, and even forecast future financial scenarios. It's an excellent tool for those who appreciate detailed financial planning.</li>" +
+    "</ol>" +
+    "<h3>Setting Realistic Goals</h3>" +
+    "<p>Budgeting becomes more meaningful and motivating when you have clear goals to work towards. Set both short-term and long-term financial objectives. Here are a few examples:</p>" +
+    "<ol>" +
+    "<li>Short-term goals: Building an emergency fund, paying off credit card debt, saving for a dream vacation, or purchasing a new gadget.</li>" +
+    "<li>Long-term goals: Saving for a down payment on a home, funding your retirement, investing in stocks or real estate, or starting your own business.</li>" +
+    "</ol>" +
+    "<p>Remember to make your goals SMART—Specific, Measurable, Achievable, Relevant, and Time-bound. This framework will help you stay focused and motivated on your financial journey.</p>" +
+    "<h3>Creating Your Budget</h3>" +
+    "<p>Now comes the fun part—creating your budget! Begin by allocating a portion of your income to cover essential expenses like rent, groceries, utilities, and transportation. Next, determine how much you want to save and invest towards your financial goals. Finally, set aside an amount for discretionary spending, allowing yourself guilt-free enjoyment. Flexibility is key, so adjust your budget as your circumstances change.</p>" +
+    "<h3>Budgeting Tools and Resources</h3>" +
+    "<p>To simplify your budgeting journey, explore these alternative tools and resources:</p>" +
+    "<ol>" +
+    "<li><a href='https://www.youneedabudget.com/'>YNAB (You Need a Budget)</a>: YNAB is a popular budgeting app that focuses on providing a clear understanding of your money and helping you make informed financial decisions.</li>" +
+    "<li><a href='https://toshl.com/'>Toshl Finance</a>: Toshl Finance is a feature-rich app that allows you to track expenses, set budgets, and gain insights into your spending habits. It also integrates with various banks, making expense tracking more convenient. With Toshl Finance, you'll have a powerful tool at your fingertips to manage your finances effectively.</li>" +
+    "</ol>" +
+    "<h3>Conclusion</h3>" +
+    "<p>Congratulations on taking the first step towards financial independence and empowerment! By mastering the art of budgeting, you're setting yourself up for a bright financial future. Remember, budgeting is a continuous process that requires discipline and flexibility. Regularly review your budget, track your expenses, and make adjustments as necessary. Explore the recommended tools and resources or find alternatives that suit your preferences. Stay committed, stay focused, and watch your financial goals become a reality. Best of luck on your budgeting journey, young Singaporeans!</p>" +
+    "<p>(Note: The provided links are examples and may change or evolve over time. It's always recommended to do your own research and choose the tools and resources that best fit your needs.)</p>";
+}
 
 function topic2() {
-    container.innerHTML = `
+  document.querySelector("#postDistinguisher").setAttribute("value", "2");
+  container.innerHTML = `
     <h2>Understanding Income and Expenses</h2>
 
     <p>Hey there, young Singaporeans! Are you ready to take control of your personal finances? One of the first steps to financial empowerment is understanding your income and expenses. By gaining clarity about how much money you earn and where it goes, you can make informed decisions and manage your finances wisely. Let's dive into the world of income and expenses and explore some key concepts.</p>
@@ -100,7 +97,8 @@ function topic2() {
 }
 
 function topic3() {
-    container.innerHTML = `
+  document.querySelector("#postDistinguisher").setAttribute("value", "3");
+  container.innerHTML = `
 <h2>The Power of Saving: Building Financial Security</h2>
 
 <p>Welcome, fellow savers! Saving money is a fundamental aspect of personal finance that can pave the way to financial security and help you achieve your long-term goals. In this article, we'll explore the importance of saving and provide you with practical tips to develop a successful saving habit. So, let's dive in and unlock the power of saving!</p>

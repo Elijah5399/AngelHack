@@ -102,8 +102,10 @@ router.get("/registration", function (req, res, next) {
   if (req.user) {
     res.locals.user = req.user;
     res.render("index");
+  } else if (req.dupUser) {
+    res.render("registration", { dupUser: true });
   } else {
-    res.render("registration");
+    res.render("registration", { dupUser: false });
   }
 });
 
@@ -142,7 +144,13 @@ router.post("/registration", function (req, res, next) {
         [req.body.username, hashedPassword, salt],
         function (err, results) {
           if (err) {
-            return next(err);
+            console.log(err);
+            if (err.code && err.code === "ER_DUP_ENTRY") {
+              res.render("registration", { dupUser: true });
+              return;
+            } else {
+              return next(err);
+            }
           }
           var user = {
             id: results.id,
