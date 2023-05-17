@@ -65,3 +65,23 @@
   height:20px;
   margin-top:5px;
 }
+
+.voteButton {
+  height:20px;
+  width:20px;
+  margin-left: 5px;
+}
+
+.voteButton.inactive {
+  filter: grayscale(100%);
+}
+
+/*<script>*/
+/* let likesCount = document.getElementsByClassName('likesCount');*/
+/*let voteButton = document.getElementsByClassName('voteButton');*/
+/*for (let i=0; i<likes.length; i++) {*/
+/*likes[i].addEventListener("click", function(){*/
+/*  if*/
+/*});*/
+/*}*/
+/*</script>*/
