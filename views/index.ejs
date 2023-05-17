@@ -68,17 +68,19 @@
         </a>
         <% } else { %>
         <!-- Remove everything in this else block when we have a proper logout and profile icon -->
-        <p class="mb-0" style="margin-right: 5px"><%= user.username %></p>
-        <!-- If not logged in show them the signout button (TODO)-->
-        <form action="/logout" method="post">
-          <input
-            class="logout"
-            type="image"
-            src="icons8-logout-50.png"
-            onmouseover="this.src='icons8-logout.gif'"
-            onmouseout="this.src='icons8-logout-50.png'"
-          />
-        </form>
+        <div class="d-flex align-items-center">
+          <p class="mb-0" style="margin-right: 5px"><%= user.username %></p>
+          <!-- If not logged in show them the signout button (TODO)-->
+          <form action="/logout" method="post">
+            <input
+              class="logout"
+              type="image"
+              src="icons8-logout-50.png"
+              onmouseover="this.src='icons8-logout.gif'"
+              onmouseout="this.src='icons8-logout-50.png'"
+            />
+          </form>
+      </div>
         <% } %>
       </nav>
       <!-- End of top navbar-->
@@ -221,9 +223,13 @@
                       the comments section needs to change dynamically when you
                       switch between topics
                     </p>
-                    <div class="d-flex justify-content-start">
+                    <div class="d-flex justify-content-end">
                       <p class="mb-0 likesCount">0</p>
-                      <img src="fire.png" class="voteButton inactive" />
+                      <% if (!user) { %>
+                        <button id="test"> </button>
+                      <% } else { %>
+                        <img src="fire.png" class="voteButton inactive" />
+                      <% } %>
                     </div>
                   </div>
                 </div>
