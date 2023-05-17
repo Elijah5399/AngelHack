@@ -1,337 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Singapore Finance Page</title>
     <link href="style.css" rel="stylesheet" />
     <!--Bootstrap core CSS-->
     <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-            crossorigin="anonymous"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
     />
     <meta
-            name="description"
-            content="A finance page covering topics related to finance in Singapore"
+      name="description"
+      content="A finance page covering topics related to finance in Singapore"
     />
     <meta name="keywords" content="angelhack finance singapore" />
     <meta charset="utf-8" />
     <!-- this sets the width of the page to follow screen-width of device, and sets the initial zoom level when page is first loaded-->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-</head>
-<body>
-<!-- bootstrap requires a containing element to wrap site contents in the grid system-->
-<!-- this creates a responsive full-width page-->
-<div class="container-fluid bootstrap-override">
-    <!--NavBar-->
-    <nav
-            class="navbar navbar-expand-lg navbar-light bg-light sticky-top navbar-override"
-    >
-        <a class="navbar-brand" href="#">Singapore Finance Page</a>
+  </head>
+  <body>
+    <!-- bootstrap requires a containing element to wrap site contents in the grid system-->
+    <!-- this creates a responsive full-width page-->
+    <div class="container-fluid bootstrap-override">
+      <!--NavBar-->
+      <nav
+        class="navbar navbar-expand-lg navbar-light bg-light sticky-top navbar-override"
+      >
+        <a class="navbar-brand" href="/">Singapore Finance Page</a>
         <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarTogglerDemo02"
-                aria-controls="navbarTogglerDemo02"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-            <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#" onclick="home()">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Help</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="/" onclick="home()">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Help</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
         </div>
         <% if (!user) { %>
-            <!--Profile pic with link to login.html if user is logged out-->
-            <a href="/login">
-                <img
-                        class="float-right profileicon"
-                        src="img/profilepic2.png"
-                        alt=""
-                        width="47"
-                        height="40"
-                />
-            </a>
+        <!--Profile pic with link to login.html if user is logged out-->
+        <a href="/login">
+          <img
+            class="float-right profileicon"
+            src="img/profilepic2.png"
+            alt=""
+            width="47"
+            height="40"
+          />
+        </a>
         <% } else { %>
-            <!-- Remove everything in this else block when we have a proper logout and profile icon -->
-            <div class="d-flex align-items-center">
-                <p class="mb-0" style="margin-right: 5px"><%= user.username %></p>
-                <!-- If not logged in show them the signout button (TODO)-->
-                <form action="/logout" method="post">
-                    <input
-                            class="logout"
-                            type="image"
-                            src="img/icons8-logout-50.png"
-                            onmouseover="this.src='img/icons8-logout.gif'"
-                            onmouseout="this.src='img/icons8-logout-50.png'"
-                    />
-                </form>
-            </div>
+        <!-- Remove everything in this else block when we have a proper logout and profile icon -->
+        <div class="d-flex align-items-center">
+          <p class="mb-0" style="margin-right: 5px"><%= user.username %></p>
+          <!-- If not logged in show them the signout button (TODO)-->
+          <form action="/logout" method="post">
+            <input
+              class="logout"
+              type="image"
+              src="img/icons8-logout-50.png"
+              onmouseover="this.src='img/icons8-logout.gif'"
+              onmouseout="this.src='img/icons8-logout-50.png'"
+            />
+          </form>
+        </div>
         <% } %>
-    </nav>
-    <!-- End of top navbar-->
-    <main id="main">
+      </nav>
+      <!-- End of top navbar-->
+      <main id="main">
         <!-- Side navbar, use list items for each topic-->
         <div class="wrapper">
-            <nav id="sidebar" class="navbar-light bg-light">
-                <ul class="list-unstyled components">
-                    <p id="nav-header">Navigation</p>
-                    <li class="active">
-                        <a
-                                href="#homeSubmenu"
-                                data-bs-toggle="collapse"
-                                aria-expanded="false"
-                                class="dropdown-toggle"
-                        >Basics</a
-                        >
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li>
-                                <a href="topic1" id="budgeting"
-                                >Budgeting</a
-                                >
-                            </li>
-                            <li>
-                                <a href="topic2" id="income-and-expenses"
-                                >Income and Expenses</a
-                                >
-                            </li>
-                            <li>
-                                <a href="topic3" id="saving">Saving</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <button
-                        type="button"
-                        class="btn btn-secondary"
-                        onclick="backToTop()"
+          <nav id="sidebar" class="navbar-light bg-light">
+            <ul class="list-unstyled components">
+              <p id="nav-header">Navigation</p>
+              <li class="active">
+                <a
+                  href="#homeSubmenu"
+                  data-bs-toggle="collapse"
+                  aria-expanded="false"
+                  class="dropdown-toggle"
+                  >Basics</a
                 >
-                    Back to top
-                </button>
-            </nav>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                  <li>
+                    <a href="topic1" id="budgeting">Budgeting</a>
+                  </li>
+                  <li>
+                    <a href="topic2" id="income-and-expenses"
+                      >Income and Expenses</a
+                    >
+                  </li>
+                  <li>
+                    <a href="topic3" id="saving">Saving</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="backToTop()"
+            >
+              Back to top
+            </button>
+          </nav>
         </div>
         <!-- End of side navbar, start of displayed contents-->
         <div class="container-fluid bootstrap-override" id="right-container">
-            <div class="container-fluid m-0 pl-4 pr-4 pt-1" id="content">
-                <h2>The Power of Saving: Building Financial Security</h2>
-                <p>Welcome, fellow savers! Saving money is a fundamental aspect of personal finance that can pave the
-                    way to financial security and help you achieve your long-term goals. In this article, we'll explore
-                    the importance of saving and provide you with practical tips to develop a successful saving habit.
-                    So, let's dive in and unlock the power of saving!</p>
-                <h3>Why Saving Matters</h3>
-                <p>Saving money is not just about setting aside a portion of your income for the future; it's about
-                    creating a strong financial foundation that offers you peace of mind and opens up opportunities.
-                    Here are a few reasons why saving matters:</p>
-                <ul>
-                    <li>Emergency Fund: Life is unpredictable, and unexpected expenses can arise at any time. Having an
-                        emergency fund acts as a safety net, providing you with financial security during challenging
-                        times.</li>
-                    <li>Financial Freedom: Saving allows you to break free from living paycheck to paycheck. It gives
-                        you the freedom to make choices based on your goals and values rather than being limited by
-                        financial constraints.</li>
-                    <li>Long-Term Goals: Whether you're dreaming of homeownership, starting a business, or planning for
-                        retirement, saving is the key to turning those dreams into reality. By consistently saving,
-                        you'll make progress towards your long-term goals.</li>
-                </ul>
-                <h3>Practical Tips for Saving</h3>
-                <p>Now that we understand the importance of saving, let's explore some practical tips to help you
-                    develop a successful saving habit:</p>
-                <ul>
-                    <li>Set Clear Goals: Determine your financial goals and the amount of money you need to save to
-                        achieve them. Having specific goals provides clarity and motivation for your saving journey.</li>
-                    <li>Create a Budget: A budget is a powerful tool that helps you track your income and expenses,
-                        identify areas where you can cut back, and allocate money towards savings. Use budgeting apps
-                        or spreadsheets to streamline the process.</li>
-                    <li>Automate Your Savings: Make saving effortless by setting up automatic transfers from your
-                        paycheck or checking account to a dedicated savings account. This way, you won't have to rely
-                        on willpower alone.</li>
-                    <li>Reduce Expenses: Look for opportunities to reduce your expenses. Cut back on non-essential items
-                        or find more cost-effective alternatives. Small changes can add up over time.</li>
-                    <li>Increase Your Income: Explore ways to boost your income through side hustles, freelance work,
-                        or investing. The extra money can be directed towards savings, accelerating your progress.</li>
-                    <li>Avoid Impulse Buying: Before making a purchase, pause and evaluate whether it aligns with your
-                        priorities and financial goals. Delay gratification and practice mindful spending.</li>
-                </ul>
-                <p>Remember, saving is not just a one-time activity; it's a habit that requires consistency and
-                    discipline. Start small and gradually increase your savings as your income grows.</p>
-                <h3>Useful Saving Tools and Resources</h3>
-                <p>Here are some helpful tools and resources to support your saving journey:</p>
-                <ul>
-                    <li><a href="https://www.singlife.com/">Singlife</a>: Singlife is a mobile app that offers a
-                        high-interest savings account with no lock-in period. It's a convenient way to grow your
-                        savings while earning competitive interest rates.</li>
-                    <li><a href="https://www.ocbc.com/personal-banking/accounts/360-account">OCBC 360 Account</a>: The
-                        OCBC 360 Account is a popular savings account in Singapore that offers attractive interest rates
-                        and various bonus interest opportunities. It's worth considering if you're looking for a reliable
-                        savings account with added benefits.</li>
-                    <li><a href="https://sg.finance.yahoo.com/">Yahoo Finance</a>: Stay updated on the latest financial
-                        news and market trends with Yahoo Finance. It provides valuable insights and resources to help
-                        you make informed decisions about your savings and investments.</li>
-                    <li><a href="https://www.mas.gov.sg/">Monetary Authority of Singapore (MAS)</a>: The MAS website is
-                        a reliable source of information on personal finance and financial literacy. Explore their
-                        resources to enhance your understanding of savings, investments, and financial planning.</li>
-                </ul>
-                <p>Remember, choosing the right savings tools and resources is essential, as they can help optimize
-                    your saving efforts and provide valuable insights. Take the time to research and explore options that
-                    align with your financial goals and preferences.</p>
-                <p>With a solid saving strategy in place, you'll be well on your way to achieving financial security and
-                    building a brighter future. Start saving today and unlock the power of financial freedom!</p>
-                <p>Stay tuned for more articles on personal finance topics, where we'll explore investing, debt management,
-                    and strategies for maximizing your savings. Your journey to financial success continues!</p>
-            </div>
-            <!-- End of contents, start of comments-->
+          <div class="container-fluid m-0 pl-4 pr-4 pt-1" id="content">
+            <h2>The Power of Saving: Building Financial Security</h2>
+            <p>
+              Welcome, fellow savers! Saving money is a fundamental aspect of
+              personal finance that can pave the way to financial security and
+              help you achieve your long-term goals. In this article, we'll
+              explore the importance of saving and provide you with practical
+              tips to develop a successful saving habit. So, let's dive in and
+              unlock the power of saving!
+            </p>
+            <h3>Why Saving Matters</h3>
+            <p>
+              Saving money is not just about setting aside a portion of your
+              income for the future; it's about creating a strong financial
+              foundation that offers you peace of mind and opens up
+              opportunities. Here are a few reasons why saving matters:
+            </p>
+            <ul>
+              <li>
+                Emergency Fund: Life is unpredictable, and unexpected expenses
+                can arise at any time. Having an emergency fund acts as a safety
+                net, providing you with financial security during challenging
+                times.
+              </li>
+              <li>
+                Financial Freedom: Saving allows you to break free from living
+                paycheck to paycheck. It gives you the freedom to make choices
+                based on your goals and values rather than being limited by
+                financial constraints.
+              </li>
+              <li>
+                Long-Term Goals: Whether you're dreaming of homeownership,
+                starting a business, or planning for retirement, saving is the
+                key to turning those dreams into reality. By consistently
+                saving, you'll make progress towards your long-term goals.
+              </li>
+            </ul>
+            <h3>Practical Tips for Saving</h3>
+            <p>
+              Now that we understand the importance of saving, let's explore
+              some practical tips to help you develop a successful saving habit:
+            </p>
+            <ul>
+              <li>
+                Set Clear Goals: Determine your financial goals and the amount
+                of money you need to save to achieve them. Having specific goals
+                provides clarity and motivation for your saving journey.
+              </li>
+              <li>
+                Create a Budget: A budget is a powerful tool that helps you
+                track your income and expenses, identify areas where you can cut
+                back, and allocate money towards savings. Use budgeting apps or
+                spreadsheets to streamline the process.
+              </li>
+              <li>
+                Automate Your Savings: Make saving effortless by setting up
+                automatic transfers from your paycheck or checking account to a
+                dedicated savings account. This way, you won't have to rely on
+                willpower alone.
+              </li>
+              <li>
+                Reduce Expenses: Look for opportunities to reduce your expenses.
+                Cut back on non-essential items or find more cost-effective
+                alternatives. Small changes can add up over time.
+              </li>
+              <li>
+                Increase Your Income: Explore ways to boost your income through
+                side hustles, freelance work, or investing. The extra money can
+                be directed towards savings, accelerating your progress.
+              </li>
+              <li>
+                Avoid Impulse Buying: Before making a purchase, pause and
+                evaluate whether it aligns with your priorities and financial
+                goals. Delay gratification and practice mindful spending.
+              </li>
+            </ul>
+            <p>
+              Remember, saving is not just a one-time activity; it's a habit
+              that requires consistency and discipline. Start small and
+              gradually increase your savings as your income grows.
+            </p>
+            <h3>Useful Saving Tools and Resources</h3>
+            <p>
+              Here are some helpful tools and resources to support your saving
+              journey:
+            </p>
+            <ul>
+              <li>
+                <a href="https://www.singlife.com/">Singlife</a>: Singlife is a
+                mobile app that offers a high-interest savings account with no
+                lock-in period. It's a convenient way to grow your savings while
+                earning competitive interest rates.
+              </li>
+              <li>
+                <a
+                  href="https://www.ocbc.com/personal-banking/accounts/360-account"
+                  >OCBC 360 Account</a
+                >: The OCBC 360 Account is a popular savings account in
+                Singapore that offers attractive interest rates and various
+                bonus interest opportunities. It's worth considering if you're
+                looking for a reliable savings account with added benefits.
+              </li>
+              <li>
+                <a href="https://sg.finance.yahoo.com/">Yahoo Finance</a>: Stay
+                updated on the latest financial news and market trends with
+                Yahoo Finance. It provides valuable insights and resources to
+                help you make informed decisions about your savings and
+                investments.
+              </li>
+              <li>
+                <a href="https://www.mas.gov.sg/"
+                  >Monetary Authority of Singapore (MAS)</a
+                >: The MAS website is a reliable source of information on
+                personal finance and financial literacy. Explore their resources
+                to enhance your understanding of savings, investments, and
+                financial planning.
+              </li>
+            </ul>
+            <p>
+              Remember, choosing the right savings tools and resources is
+              essential, as they can help optimize your saving efforts and
+              provide valuable insights. Take the time to research and explore
+              options that align with your financial goals and preferences.
+            </p>
+            <p>
+              With a solid saving strategy in place, you'll be well on your way
+              to achieving financial security and building a brighter future.
+              Start saving today and unlock the power of financial freedom!
+            </p>
+            <p>
+              Stay tuned for more articles on personal finance topics, where
+              we'll explore investing, debt management, and strategies for
+              maximizing your savings. Your journey to financial success
+              continues!
+            </p>
+          </div>
+          <!-- End of contents, start of comments-->
 
-            <div class="container-fluid m-0 mt-2 pl-4 pr-4 pt-2" id="comments">
-                <div class="line"></div>
-                <!-- tell the user they need to login to comment-->
-                <% if (!user) { %>
-                    <textarea
-                            class="form-control"
-                            id="commentsBox"
-                            rows="3"
-                            placeholder="You have to be logged in to comment..."
-                            disabled
-                    ></textarea>
-                    <button
-                            type="submit"
-                            class="btn btn-secondary"
-                            id="postbtn"
-                            disabled
-                    >
-                        POST COMMENT
-                    </button>
+          <div class="container-fluid m-0 mt-2 pl-4 pr-4 pt-2" id="comments">
+            <div class="line"></div>
+            <!-- tell the user they need to login to comment-->
+            <% if (!user) { %>
+            <textarea
+              class="form-control"
+              id="commentsBox"
+              rows="3"
+              placeholder="You have to be logged in to comment..."
+              disabled
+            ></textarea>
+            <button
+              type="submit"
+              class="btn btn-secondary"
+              id="postbtn"
+              disabled
+            >
+              POST COMMENT
+            </button>
 
-                <% } else { %>
+            <% } else { %>
 
-                    <form
-                            style="margin-bottom: 15px"
-                            action="/postComment"
-                            method="post"
-                    >
+            <form
+              style="margin-bottom: 15px"
+              action="/postComment"
+              method="post"
+            >
               <textarea
-                      class="form-control"
-                      id="commentsBox"
-                      rows="3"
-                      maxlength="300"
-                      placeholder="Leave a comment..."
-                      name="commentContent"
+                class="form-control"
+                id="commentsBox"
+                rows="3"
+                maxlength="300"
+                placeholder="Leave a comment..."
+                name="commentContent"
               ></textarea>
-                        <!-- This input field represents which subtopic the user is currently on! -->
-                        <input
-                                type="hidden"
-                                id="postDistinguisher"
-                                name="postDist"
-                                value="3"
-                        />
-                        <input
-                                type="hidden"
-                                id="dateTracker"
-                                name="dateTime"
-                                value="<%= new Date().toISOString().slice(0, 19).replace('T', ' ') %>"
-                        />
-                        <input
-                                type="hidden"
-                                id="nameTracker"
-                                name="userPosted"
-                                value="<%= user.username %>"
-                        />
-                        <button type="submit" class="btn btn-success" id="postbtn">
-                            POST COMMENT
-                        </button>
-                    </form>
-                <% } %>
-                <div class="d-flex justify-content-between line">
-                    <p
-                            style="
+              <!-- This input field represents which subtopic the user is currently on! -->
+              <input
+                type="hidden"
+                id="postDistinguisher"
+                name="postDist"
+                value="3"
+              />
+              <input
+                type="hidden"
+                id="dateTracker"
+                name="dateTime"
+                value="<%= new Date().toISOString().slice(0, 19).replace('T', ' ') %>"
+              />
+              <input
+                type="hidden"
+                id="nameTracker"
+                name="userPosted"
+                value="<%= user.username %>"
+              />
+              <button type="submit" class="btn btn-success" id="postbtn">
+                POST COMMENT
+              </button>
+            </form>
+            <% } %>
+            <div class="d-flex justify-content-between line">
+              <p
+                style="
                   margin-bottom: 9px;
                   position: relative;
                   top: 10px;
                   border-bottom: 2px solid #00b38f;
                 "
-                    >
-                        <span>0</span> Comments
-                    </p>
-                    <select
-                            class="form-control"
-                            style="width: auto; border-bottom: 2px solid rgb(50, 50, 50)"
-                            id="sortingCriteria"
-                    >
-                        <option>Newest</option>
-                        <option>Popular</option>
-                    </select>
-                </div>
-                <!-- Actual comments  -->
-                <div class="row d-flex justify-content-center">
-                    <div class="col-md-12 col-lg-10 col-xl-8">
-                        <div class="card" style="margin-bottom: 20px">
-                            <div class="card-body">
-                                <div>
-                                    <h6 class="fw-bold text-primary mb-1">ElijahsDad</h6>
-                                    <p class="text-muted small mb-0">
-                                        February 69, 2027 00:78 pm
-                                    </p>
-                                </div>
-                                <p class="mt-3 mb-4 pb-2">my dog stepped on a bee :(</p>
-
-                                <div class="d-flex justify-content-end">
-                                    <% if (!user) { %>
-                                        <div class="d-flex">
-                                            <p>3</p>
-                                            <img
-                                                    src="img/fire.png"
-                                                    onclick="alert('guessWhoYourMumSawLastNight')"
-                                            />
-                                        </div>
-                                    <% } else { %>
-                                        <form
-                                                method="POST"
-                                                onsubmit="return false;"
-                                                id=""
-                                                class="d-flex"
-                                        >
-                                            <p class="mb-0 likesCount">4</p>
-                                            <input
-                                                    type="image"
-                                                    src="img/fire.png"
-                                                    class="voteButton inactive"
-                                                    alt="vote"
-                                            />
-                                        </form>
-                                    <% } %>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- This is the end of the comment thread -->
-                </div>
+              >
+                <span>0</span> Comments
+              </p>
+              <select
+                class="form-control"
+                style="width: auto; border-bottom: 2px solid rgb(50, 50, 50)"
+                id="sortingCriteria"
+              >
+                <option>Newest</option>
+                <option>Popular</option>
+              </select>
             </div>
-            <!-- End of comments-->
+            <!-- Actual comments  -->
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-12 col-lg-10 col-xl-8">
+                <div class="card" style="margin-bottom: 20px">
+                  <div class="card-body">
+                    <div>
+                      <h6 class="fw-bold text-primary mb-1">ElijahsDad</h6>
+                      <p class="text-muted small mb-0">
+                        February 69, 2027 00:78 pm
+                      </p>
+                    </div>
+                    <p class="mt-3 mb-4 pb-2">my dog stepped on a bee :(</p>
+
+                    <div class="d-flex justify-content-end">
+                      <% if (!user) { %>
+                      <div class="d-flex">
+                        <p>3</p>
+                        <img
+                          src="img/fire.png"
+                          onclick="alert('guessWhoYourMumSawLastNight')"
+                        />
+                      </div>
+                      <% } else { %>
+                      <form
+                        method="POST"
+                        onsubmit="return false;"
+                        id=""
+                        class="d-flex"
+                      >
+                        <p class="mb-0 likesCount">4</p>
+                        <input
+                          type="image"
+                          src="img/fire.png"
+                          class="voteButton inactive"
+                          alt="vote"
+                        />
+                      </form>
+                      <% } %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- This is the end of the comment thread -->
+            </div>
+          </div>
+          <!-- End of comments-->
         </div>
         <!-- End of contents -->
-    </main>
-    <!-- End of page -->
-</div>
-<!--Some bootstrap components require these js scripts to function-->
-<script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"
-></script>
-<script src="buttonLogic.js"></script>
-<script src="script.js"></script>
-</body>
+      </main>
+      <!-- End of page -->
+    </div>
+    <!--Some bootstrap components require these js scripts to function-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="buttonLogic.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>

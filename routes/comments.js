@@ -23,7 +23,7 @@ connection.connect(function (err) {
 router.post("/postComment", function (req, res, next) {
   //Use an SQL query to insert the comment into the DB
   connection.query(process.env.SQL_FOR_INSERTING_COMMENT, [
-    req.body.postDist,
+    0,
     null,
     req.body.commentContent,
     req.body.dateTime,
@@ -37,7 +37,7 @@ router.post("/postComment", function (req, res, next) {
 router.post("/topic1/postComment", function (req, res, next) {
   //Use an SQL query to insert the comment into the DB
   connection.query(process.env.SQL_FOR_INSERTING_COMMENT, [
-    req.body.postDist,
+    1,
     null,
     req.body.commentContent,
     req.body.dateTime,
@@ -52,7 +52,7 @@ router.post("/topic1/postComment", function (req, res, next) {
 router.post("/topic2/postComment", function (req, res, next) {
   //Use an SQL query to insert the comment into the DB
   connection.query(process.env.SQL_FOR_INSERTING_COMMENT, [
-    req.body.postDist,
+    2,
     null,
     req.body.commentContent,
     req.body.dateTime,
@@ -67,7 +67,7 @@ router.post("/topic2/postComment", function (req, res, next) {
 router.post("/topic3/postComment", function (req, res, next) {
   //Use an SQL query to insert the comment into the DB
   connection.query(process.env.SQL_FOR_INSERTING_COMMENT, [
-    req.body.postDist,
+    3,
     null,
     req.body.commentContent,
     req.body.dateTime,
@@ -80,6 +80,7 @@ router.post("/topic3/postComment", function (req, res, next) {
 });
 
 function getComments(postID) {
+  console.log("postID is: " + JSON.stringify(postID));
   comments = null;
   connection.query(
     process.env.SQL_FOR_RETRIEVING_COMMENTS,
@@ -89,7 +90,11 @@ function getComments(postID) {
         console.log("Error connecting: " + err.stack);
         return;
       }
-      console.log("Results from SQL Query are: " + results);
+      console.log("Contents are: " + results.toString());
+      console.log("Enumerating objects: ");
+      for (var i = 0; i < results.length; i++) {
+        console.log(JSON.stringify(results[i]));
+      }
       comments = results;
     }
   );

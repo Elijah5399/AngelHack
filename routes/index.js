@@ -4,6 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
+  res.locals.comments = getComments(0);
   if (!req.user) {
     res.locals.user = null;
     res.render("index");
