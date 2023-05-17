@@ -36,7 +36,25 @@ router.post("/postComment", function (req, res, next) {
   res.render("index", { user: req.user });
 });
 
+function getComments(postID) {
+  comments = null;
+  connection.query(
+    process.env.SQL_FOR_RETRIEVING_COMMENTS,
+    [postID],
+    function (err, results) {
+      if (err) {
+        console.error("Error connecting: " + err.stack);
+        return;
+      }
+      console.log("Results from SQL Query are: " + results);
+      comments = results;
+    }
+  );
+  return comments;
+}
+
 module.exports = router;
+module.exports = getComments;
 
 /* 
 Post format in req.body:
