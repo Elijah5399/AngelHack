@@ -190,7 +190,7 @@ router.post("/likePost", function (req, res, next) {
           req.body.username,
         ]);
         //increment the comment's likes in the comments table
-        commentsConnection.query(process.env.SQL_FOR_ADDING_LIKES_TO_POST, [
+        commentsConnection.query(process.env.SQL_FOR_DELETING_LIKES_FROM_POST, [
           req.body.comment_id,
         ]);
       } else {
@@ -202,7 +202,7 @@ router.post("/likePost", function (req, res, next) {
           req.body.username,
         ]);
         //decrement the likes count in the comments table
-        commentsConnection.query(process.env.SQL_FOR_DELETING_LIKES_FROM_POST, [
+        commentsConnection.query(process.env.SQL_FOR_ADDING_LIKES_TO_POST, [
           req.body.comment_id,
         ]);
       }
