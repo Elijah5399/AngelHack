@@ -38,7 +38,7 @@ router.get("/topic1", function (req, res, next) {
         if (err) {
           console.log("error getting comments: " + err.stack);
         }
-        res.render("topc1", { user: null, comments: results });
+        res.render("topic1", { user: null, comments: results });
       }
     );
   } else {
