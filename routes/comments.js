@@ -19,29 +19,4 @@ commentsConnection.connect(function (err) {
   console.log("Connected to the commentsLikes database!");
 });
 
-/*
-function getCommentsWrapper(postID) {
-  return new Promise((resolve, reject) => {
-    getComments(
-      postID,
-      (successResponse) => {
-        resolve(successResponse);
-      },
-      (errorResponse) => {
-        reject(errorResponse);
-      }
-    );
-  });
-}
-*/
 module.exports = commentsConnection;
-
-/* 
-Post format in req.body:
-[Object: null prototype] {
-  commentContent: 'awr',
-  postDist: '0',
-  dateTime: '2023-05-17 14:07:03',
-  userPosted: 'Urmama'
-}
-*/
