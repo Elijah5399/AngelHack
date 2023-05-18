@@ -169,12 +169,8 @@ router.post("/topic3/postComment", function (req, res, next) {
 //function to handle the liking of ANY post in homepage
 router.post("/likePost", function (req, res, next) {
   console.log("POST METHOD USED");
-  //TODO:
-  //1. check if the user has already liked the comment.
-  //2a. if they have, then decrement the likecount
-  //2b. if they haven't then increment the likecount
-  /*
   commentsConnection.query(
+    //check if the user has already liked the comment
     process.env.SQL_FOR_CHECKING_LIKES,
     [req.body.comment_id, req.body.username],
     function (err, results) {
@@ -182,27 +178,35 @@ router.post("/likePost", function (req, res, next) {
         console.log("error in verifying likes: " + err.stack);
         return;
       }
+      console.log(
+        "Results from checking with likes DB is: " + JSON.stringify(results)
+      );
       //if there is no error
       if (results.length != 0) {
         //they have liked the post before
+        //remove their likes from the likes table
         commentsConnection.query(process.env.SQL_FOR_DELETING_LIKES, [
           req.body.comment_id,
           req.body.username,
         ]);
+        //increment the comment's likes in the comments table
         commentsConnection.query(process.env.SQL_FOR_ADDING_LIKES_TO_POST, [
           req.body.comment_id,
         ]);
       } else {
+        //they have not liked the post before
+        //add their likes into the likes table
         commentsConnection.query(process.env.SQL_FOR_ADDING_LIKES, [
           req.body.comment_id,
           req.body.username,
         ]);
+        //decrement the likes count in the comments table
         commentsConnection.query(process.env.SQL_FOR_DELETING_LIKES_FROM_POST, [
           req.body.comment_id,
         ]);
       }
     }
-  );*/
+  );
   return;
 });
 

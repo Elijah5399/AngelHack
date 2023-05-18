@@ -254,6 +254,16 @@
                       >
                         <p class="mb-0 likesCount"><%- comments[i].likes %></p>
                         <button type="submit" class="voteButton unclicked">
+                          <input
+                            type="hidden"
+                            name="comment_id"
+                            value="<%= comments[i].comment_id %>"
+                          />
+                          <input
+                            type="hidden"
+                            name="username"
+                            value="<%= user.username %>"
+                          />
                           <img
                             src="img/fire.png"
                             alt="vote"
