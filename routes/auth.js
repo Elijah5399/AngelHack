@@ -85,7 +85,7 @@ router.get("/login", function (req, res, next) {
     res.render("login");
   } else {
     res.locals.user = req.user;
-    res.render("index");
+    res.redirect("/");
   }
 });
 
