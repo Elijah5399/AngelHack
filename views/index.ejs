@@ -248,17 +248,19 @@
                       <% } else { %>
                       <form
                         method="POST"
+                        action="/likePost"
                         onsubmit="return false;"
-                        id=""
+                        id="likepostid"
                         class="d-flex"
                       >
                         <p class="mb-0 likesCount"><%- comments[i].likes %></p>
-                        <input
-                          type="image"
-                          src="img/fire.png"
-                          class="voteButton inactive"
-                          alt="vote"
-                        />
+                        <button type="submit" class="voteButton unclicked">
+                          <img
+                            src="img/fire.png"
+                            alt="vote"
+                            class="fireimg inactive"
+                          />
+                        </button>
                       </form>
                       <% } %>
                     </div>

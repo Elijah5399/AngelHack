@@ -71,20 +71,15 @@ img[src="img/fire.png"],
 input[src="img/fire.png"] {
   height: 20px;
   width: 20px;
-  margin-left: 5px;
+  margin-bottom: 7px;
   filter: grayscale(100%);
 }
 
-.voteButton:not(.inactive) {
-  filter: grayscale(0%);
+.voteButton {
+  border: 0;
+  background-color: inherit;
 }
 
-#vote {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
+.fireimg:not(.inactive) {
+  filter: grayscale(0%);
 }

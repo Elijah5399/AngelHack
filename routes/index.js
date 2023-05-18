@@ -166,4 +166,10 @@ router.post("/topic3/postComment", function (req, res, next) {
   res.redirect("/topic3");
 });
 
+//function to handle the liking of ANY post in homepage
+router.post("/likePost", function (req, res, next) {
+  console.log("POST METHOD USED");
+  res.end();
+});
+
 module.exports = router;
