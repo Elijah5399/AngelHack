@@ -349,6 +349,15 @@
               </select>
             </div>
             <!-- Actual comments  -->
+            <% var likeSet = new Set();
+            if (!likedComments || likedComments.length == 0) {
+              //do nothing
+            } else {
+              for (var i = 0; i < likedComments.length; i++) {
+                likeSet.add(likedComments[i].comment_id);
+              }
+            }
+            %>
             <div class="row d-flex justify-content-center">
               <div class="col-md-12 col-lg-10 col-xl-8">
                 <% for (var i = 0; i < comments.length; i++) { %>
@@ -373,14 +382,13 @@
                           onclick="alert('You need to be logged in to like comments!')"
                         />
                       </div>
-                      <% } else { %>
-                      <form
-                        method="POST"
-                        action="/topic3/likeComment"
-                        class="d-flex"
-                      >
+                      <% } else if (likeSet.has(comments[i].comment_id)) { %>
+                        <!-- The user has liked the comment -->
+                      <form method="POST" action="/topic3/likeComment" class="d-flex">
                         <p class="mb-0 likesCount"><%- comments[i].likes %></p>
-                        <button type="submit" class="voteButton unclicked">
+                        <button
+                          type="submit"
+                          class="voteButton" />
                           <input
                             type="hidden"
                             name="comment_id"
@@ -391,15 +399,38 @@
                             name="username"
                             value="<%= user.username %>"
                           />
-                          <input type="hidden" name="post_id" value="3" />
+                          <input type="hidden" name="post_id" value="0" />
                           <img
                             src="img/fire.png"
                             alt="vote"
-                            class="fireimg inactive"
-                          />
+                            class="fireimg" />
                         </button>
                       </form>
-                      <% } %>
+                      <% } else { %>
+                        <!-- The user has NOT liked the comment -->
+                      <form method="POST" action="/topic3/likeComment" class="d-flex">
+                        <p class="mb-0 likesCount"><%- comments[i].likes %></p>
+                        <button
+                          type="submit"
+                          class="voteButton unclicked" />
+                          <input
+                            type="hidden"
+                            name="comment_id"
+                            value="<%= comments[i].comment_id %>"
+                          />
+                          <input
+                            type="hidden"
+                            name="username"
+                            value="<%= user.username %>"
+                          />
+                          <input type="hidden" name="post_id" value="0" />
+                          <img
+                            src="img/fire.png"
+                            alt="vote"
+                            class="fireimg inactive" />
+                        </button>
+                      </form>
+                        <% } %>
                     </div>
                   </div>
                 </div>
@@ -420,7 +451,6 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
-    <script src="buttonLogic.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

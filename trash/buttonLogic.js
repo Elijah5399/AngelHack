@@ -1,3 +1,4 @@
+/*
 let likesCount = document.getElementsByClassName("likesCount");
 let voteButton = document.getElementsByClassName("voteButton");
 let fireimage = document.getElementsByClassName("fireimg");
@@ -18,3 +19,4 @@ for (let i = 0; i < voteButton.length; i++) {
     }
   });
 }
+*/

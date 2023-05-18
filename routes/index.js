@@ -12,7 +12,8 @@ router.get("/", function (req, res, next) {
         if (err) {
           console.log("error getting comments: " + err.stack);
         }
-        res.render("index", { user: null, comments: results });
+        //if the user is not logged in then they haven't liked anything
+        res.render("index", { user: null, comments: results, likedComments: null });
       }
     );
   } else {
@@ -23,7 +24,17 @@ router.get("/", function (req, res, next) {
         if (err) {
           console.log("error getting comments: " + err.stack);
         }
-        res.render("index", { user: req.user, comments: results });
+        commentsConnection.query(
+          process.env.SQL_FOR_CHECKING_LIKES_2,
+          [0, req.user.username],
+          function (error, likedComments) {
+            if (error) {
+              console.log("error when checking likes: " + error.stack);
+            } else {
+              res.render("index", { user : req.user, comments : results, likedComments : likedComments});
+            }
+          }
+        )
       }
     );
   }
@@ -49,7 +60,17 @@ router.get("/topic1", function (req, res, next) {
         if (err) {
           console.log("error getting comments: " + err.stack);
         }
-        res.render("topic1", { user: req.user, comments: results });
+        commentsConnection.query(
+          process.env.SQL_FOR_CHECKING_LIKES_2,
+          [0, req.user.username],
+          function (error, likedComments) {
+            if (error) {
+              console.log("error when checking likes: " + error.stack);
+            } else {
+              res.render("topic1", { user : req.user, comments : results, likedComments : likedComments});
+            }
+          }
+        )
       }
     );
   }
@@ -75,7 +96,17 @@ router.get("/topic2", function (req, res, next) {
         if (err) {
           console.log("error getting comments: " + err.stack);
         }
-        res.render("topic2", { user: req.user, comments: results });
+        commentsConnection.query(
+          process.env.SQL_FOR_CHECKING_LIKES_2,
+          [0, req.user.username],
+          function (error, likedComments) {
+            if (error) {
+              console.log("error when checking likes: " + error.stack);
+            } else {
+              res.render("topic2", { user : req.user, comments : results, likedComments : likedComments});
+            }
+          }
+        )
       }
     );
   }
@@ -101,7 +132,17 @@ router.get("/topic3", function (req, res, next) {
         if (err) {
           console.log("error getting comments: " + err.stack);
         }
-        res.render("topic3", { user: req.user, comments: results });
+        commentsConnection.query(
+          process.env.SQL_FOR_CHECKING_LIKES_2,
+          [0, req.user.username],
+          function (error, likedComments) {
+            if (error) {
+              console.log("error when checking likes: " + error.stack);
+            } else {
+              res.render("topic3", { user : req.user, comments : results, likedComments : likedComments});
+            }
+          }
+        )
       }
     );
   }
