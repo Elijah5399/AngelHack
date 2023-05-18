@@ -292,11 +292,17 @@
                 name="postDist"
                 value="2"
               />
+              <% const datetime = new Date(); const conv1 =
+              datetime.toLocaleString("en-SG", {hour12 : false}); const conv2 =
+              conv1.slice(0, 10).split("/"); const conv3 = conv1.slice(12, 20);
+              const conv4 = conv2[2] + "-" + conv2[1] + "-" + conv2[0] + " " +
+              conv3;%>
               <input
                 type="hidden"
                 id="dateTracker"
                 name="dateTime"
-                value="<%= new Date().toISOString().slice(0, 19).replace('T', ' ') %>"
+                value="<%=
+              conv4 %>"
               />
               <input
                 type="hidden"
@@ -356,27 +362,27 @@
                       </div>
                       <% } else { %>
                       <form
-                          method="POST"
-                          action="/likePost"
-                          id="likepostid"
-                          class="d-flex"
+                        method="POST"
+                        action="/topic2/likeComment"
+                        class="d-flex"
                       >
                         <p class="mb-0 likesCount"><%- comments[i].likes %></p>
                         <button type="submit" class="voteButton unclicked">
                           <input
-                              type="hidden"
-                              name="comment_id"
-                              value="<%= comments[i].comment_id %>"
+                            type="hidden"
+                            name="comment_id"
+                            value="<%= comments[i].comment_id %>"
                           />
                           <input
-                              type="hidden"
-                              name="username"
-                              value="<%= user.username %>"
+                            type="hidden"
+                            name="username"
+                            value="<%= user.username %>"
                           />
+                          <input type="hidden" name="post_id" value="2" />
                           <img
-                              src="img/fire.png"
-                              alt="vote"
-                              class="fireimg inactive"
+                            src="img/fire.png"
+                            alt="vote"
+                            class="fireimg inactive"
                           />
                         </button>
                       </form>

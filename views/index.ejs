@@ -253,12 +253,7 @@
                         />
                       </div>
                       <% } else { %>
-                      <form
-                        method="POST"
-                        action="/likePost"
-                        id="likepostid"
-                        class="d-flex"
-                      >
+                      <form method="POST" action="/likeComment" class="d-flex">
                         <p class="mb-0 likesCount"><%- comments[i].likes %></p>
                         <button type="submit" class="voteButton unclicked">
                           <input
@@ -271,6 +266,7 @@
                             name="username"
                             value="<%= user.username %>"
                           />
+                          <input type="hidden" name="post_id" value="0" />
                           <img
                             src="img/fire.png"
                             alt="vote"
