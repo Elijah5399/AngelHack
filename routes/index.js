@@ -169,7 +169,41 @@ router.post("/topic3/postComment", function (req, res, next) {
 //function to handle the liking of ANY post in homepage
 router.post("/likePost", function (req, res, next) {
   console.log("POST METHOD USED");
-  res.end();
+  //TODO:
+  //1. check if the user has already liked the comment.
+  //2a. if they have, then decrement the likecount
+  //2b. if they haven't then increment the likecount
+  /*
+  commentsConnection.query(
+    process.env.SQL_FOR_CHECKING_LIKES,
+    [req.body.comment_id, req.body.username],
+    function (err, results) {
+      if (err) {
+        console.log("error in verifying likes: " + err.stack);
+        return;
+      }
+      //if there is no error
+      if (results.length != 0) {
+        //they have liked the post before
+        commentsConnection.query(process.env.SQL_FOR_DELETING_LIKES, [
+          req.body.comment_id,
+          req.body.username,
+        ]);
+        commentsConnection.query(process.env.SQL_FOR_ADDING_LIKES_TO_POST, [
+          req.body.comment_id,
+        ]);
+      } else {
+        commentsConnection.query(process.env.SQL_FOR_ADDING_LIKES, [
+          req.body.comment_id,
+          req.body.username,
+        ]);
+        commentsConnection.query(process.env.SQL_FOR_DELETING_LIKES_FROM_POST, [
+          req.body.comment_id,
+        ]);
+      }
+    }
+  );*/
+  return;
 });
 
 module.exports = router;
