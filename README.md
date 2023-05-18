@@ -19,9 +19,11 @@ Hosting a website on google cloud:
 
 Current issues:
 
-1a. Implement liking system
+1a. Display fire or dimmed fire depending on whether the user has liked the comment
 
-1b. Implement sorting of comments
+1b. Format time properly
+
+1c. Implement sorting of comments
 
 2. COME UP WITH CONTENT!!!!
 

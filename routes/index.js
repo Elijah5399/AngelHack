@@ -168,7 +168,6 @@ router.post("/topic3/postComment", function (req, res, next) {
 
 //function to handle the liking of ANY post in homepage
 router.post("/likePost", function (req, res, next) {
-  console.log("POST METHOD USED");
   commentsConnection.query(
     //check if the user has already liked the comment
     process.env.SQL_FOR_CHECKING_LIKES,
@@ -183,6 +182,7 @@ router.post("/likePost", function (req, res, next) {
       );
       //if there is no error
       if (results.length != 0) {
+        console.log("have liked before");
         //they have liked the post before
         //remove their likes from the likes table
         commentsConnection.query(process.env.SQL_FOR_DELETING_LIKES, [
@@ -194,6 +194,7 @@ router.post("/likePost", function (req, res, next) {
           req.body.comment_id,
         ]);
       } else {
+        console.log("have not liked before");
         //they have not liked the post before
         //add their likes into the likes table
         commentsConnection.query(process.env.SQL_FOR_ADDING_LIKES, [
