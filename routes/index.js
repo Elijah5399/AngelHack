@@ -118,8 +118,9 @@ router.post("/postComment", function (req, res, next) {
     req.body.userPosted,
   ]);
 
+  res.redirect("/");
   //on posting a comment, user is redirected to main page ??
-  res.render("index", { user: req.user });
+  //res.render("index", { user: req.user });
 });
 router.post("/topic1/postComment", function (req, res, next) {
   //Use an SQL query to insert the comment into the DB
@@ -133,7 +134,7 @@ router.post("/topic1/postComment", function (req, res, next) {
   ]);
 
   //on posting a comment, user is redirected to main page ??
-  res.render("topic1", { user: req.user });
+  res.redirect("/topic1");
 });
 
 router.post("/topic2/postComment", function (req, res, next) {
@@ -148,7 +149,7 @@ router.post("/topic2/postComment", function (req, res, next) {
   ]);
 
   //on posting a comment, user is redirected to main page ??
-  res.render("topic2", { user: req.user });
+  res.redirect("/topic2");
 });
 
 router.post("/topic3/postComment", function (req, res, next) {
@@ -163,7 +164,7 @@ router.post("/topic3/postComment", function (req, res, next) {
   ]);
 
   //on posting a comment, user is redirected to main page ??
-  res.render("topic3", { user: req.user });
+  res.redirect("/topic3");
 });
 
 module.exports = router;
