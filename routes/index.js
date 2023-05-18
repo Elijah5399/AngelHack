@@ -207,7 +207,7 @@ router.post("/likePost", function (req, res, next) {
       }
     }
   );
-  return;
+  res.redirect("/");
 });
 
 module.exports = router;
