@@ -283,6 +283,7 @@
                 maxlength="300"
                 placeholder="Leave a comment..."
                 name="commentContent"
+                required
               ></textarea>
               <!-- This input field represents which subtopic the user is currently on! -->
               <input
@@ -317,7 +318,7 @@
                   border-bottom: 2px solid #00b38f;
                 "
               >
-                <span>0</span> Comments
+                <span><%=comments.length%></span> Comments
               </p>
               <select
                 class="form-control"
@@ -350,7 +351,7 @@
                         <p><%- comments[i].likes %></p>
                         <img
                           src="img/fire.png"
-                          onclick="alert('guessWhoYourMumSawLastNight')"
+                          onclick="alert('You need to be logged in to like comments!')"
                         />
                       </div>
                       <% } else { %>

@@ -173,6 +173,7 @@
                 maxlength="300"
                 placeholder="Leave a comment..."
                 name="commentContent"
+                required
               ></textarea>
               <!-- This input field represents which subtopic the user is currently on! -->
               <input
@@ -207,7 +208,7 @@
                   border-bottom: 2px solid #00b38f;
                 "
               >
-                <span>0</span> Comments
+                <span><%=comments.length%></span> Comments
               </p>
               <select
                 class="form-control"
@@ -241,23 +242,34 @@
                         <p><%- comments[i].likes %></p>
                         <img
                           src="img/fire.png"
-                          onclick="alert('guessWhoYourMumSawLastNight')"
+                          onclick="alert('You need to be logged in to like comments!')"
                         />
                       </div>
                       <% } else { %>
                       <form
                         method="POST"
-                        onsubmit="return false;"
-                        id=""
+                        action="/likePost"
+                        id="likepostid"
                         class="d-flex"
                       >
                         <p class="mb-0 likesCount"><%- comments[i].likes %></p>
-                        <input
-                          type="image"
-                          src="img/fire.png"
-                          class="voteButton inactive"
-                          alt="vote"
-                        />
+                        <button type="submit" class="voteButton unclicked">
+                          <input
+                            type="hidden"
+                            name="comment_id"
+                            value="<%= comments[i].comment_id %>"
+                          />
+                          <input
+                            type="hidden"
+                            name="username"
+                            value="<%= user.username %>"
+                          />
+                          <img
+                            src="img/fire.png"
+                            alt="vote"
+                            class="fireimg inactive"
+                          />
+                        </button>
                       </form>
                       <% } %>
                     </div>

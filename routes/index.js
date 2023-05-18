@@ -38,7 +38,7 @@ router.get("/topic1", function (req, res, next) {
         if (err) {
           console.log("error getting comments: " + err.stack);
         }
-        res.render("topc1", { user: null, comments: results });
+        res.render("topic1", { user: null, comments: results });
       }
     );
   } else {
@@ -164,6 +164,50 @@ router.post("/topic3/postComment", function (req, res, next) {
 
   //on posting a comment, user is redirected back to topic3
   res.redirect("/topic3");
+});
+
+//function to handle the liking of ANY post in homepage
+router.post("/likePost", function (req, res, next) {
+  console.log("POST METHOD USED");
+  commentsConnection.query(
+    //check if the user has already liked the comment
+    process.env.SQL_FOR_CHECKING_LIKES,
+    [req.body.comment_id, req.body.username],
+    function (err, results) {
+      if (err) {
+        console.log("error in verifying likes: " + err.stack);
+        return;
+      }
+      console.log(
+        "Results from checking with likes DB is: " + JSON.stringify(results)
+      );
+      //if there is no error
+      if (results.length != 0) {
+        //they have liked the post before
+        //remove their likes from the likes table
+        commentsConnection.query(process.env.SQL_FOR_DELETING_LIKES, [
+          req.body.comment_id,
+          req.body.username,
+        ]);
+        //increment the comment's likes in the comments table
+        commentsConnection.query(process.env.SQL_FOR_ADDING_LIKES_TO_POST, [
+          req.body.comment_id,
+        ]);
+      } else {
+        //they have not liked the post before
+        //add their likes into the likes table
+        commentsConnection.query(process.env.SQL_FOR_ADDING_LIKES, [
+          req.body.comment_id,
+          req.body.username,
+        ]);
+        //decrement the likes count in the comments table
+        commentsConnection.query(process.env.SQL_FOR_DELETING_LIKES_FROM_POST, [
+          req.body.comment_id,
+        ]);
+      }
+    }
+  );
+  res.redirect("/");
 });
 
 module.exports = router;
