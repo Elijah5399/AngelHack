@@ -230,11 +230,17 @@
                                 name="postDist"
                                 value="1"
                         />
+                        <% const datetime = new Date(); const conv1 =
+                        datetime.toLocaleString("en-SG", {hour12 : false}); const conv2 =
+                        conv1.slice(0, 10).split("/"); const conv3 = conv1.slice(12, 20);
+                        const conv4 = conv2[2] + "-" + conv2[1] + "-" + conv2[0] + " " +
+                        conv3;%>
                         <input
-                                type="hidden"
-                                id="dateTracker"
-                                name="dateTime"
-                                value="<%= new Date().toISOString().slice(0, 19).replace('T', ' ') %>"
+                          type="hidden"
+                          id="dateTracker"
+                          name="dateTime"
+                          value="<%=
+                        conv4 %>"
                         />
                         <input
                                 type="hidden"
@@ -268,63 +274,93 @@
                     </select>
                 </div>
                 <!-- Actual comments  -->
-                <div class="row d-flex justify-content-center">
-                    <div class="col-md-12 col-lg-10 col-xl-8">
-      
-                      <% for (var i = 0; i < comments.length; i++) { %>
-                      <div class="card" style="margin-bottom: 20px">
-                        <div class="card-body">
-                          <div>
-                            <h6 class="fw-bold text-primary mb-1">
-                              <%- comments[i].username %>
-                            </h6>
-                            <p class="text-muted small mb-0">
-                              <%- comments[i].time_posted %>
-                            </p>
-                          </div>
-                          <p class="mt-3 mb-4 pb-2"><%- comments[i].content %></p>
-      
-                          <div class="d-flex justify-content-end">
-                            <% if (!user) { %>
-                            <div class="d-flex">
-                              <p><%- comments[i].likes %></p>
-                              <img
-                                src="img/fire.png"
-                                onclick="alert('You need to be logged in to like comments!')"
-                              />
-                            </div>
-                            <% } else { %>
-                            <form
-                                method="POST"
-                                action="/likePost"
-                                id="likepostid"
-                                class="d-flex"
-                            >
-                                <p class="mb-0 likesCount"><%- comments[i].likes %></p>
-                                <button type="submit" class="voteButton unclicked">
-                                    <input
-                                        type="hidden"
-                                        name="comment_id"
-                                        value="<%= comments[i].comment_id %>"
-                                    />
-                                    <input
-                                        type="hidden"
-                                        name="username"
-                                        value="<%= user.username %>"
-                                    />
-                                    <img
-                                        src="img/fire.png"
-                                        alt="vote"
-                                        class="fireimg inactive"
-                                    />
-                                </button>
-                            </form>
-                            <% } %>
-                          </div>
-                        </div>
-                      </div>
-                      <% } %> <%# End of template content %>
+                <% var likeSet = new Set();
+                if (!likedComments || likedComments.length == 0) {
+                    //do nothing
+                } else {
+                    for (var i = 0; i < likedComments.length; i++) {
+                        likeSet.add(likedComments[i].comment_id);
+                    }
+                }
+                %>
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-12 col-lg-10 col-xl-8">
+                <% for (var i = 0; i < comments.length; i++) { %>
+                <div class="card" style="margin-bottom: 20px">
+                  <div class="card-body">
+                    <div>
+                      <h6 class="fw-bold text-primary mb-1">
+                        <%- comments[i].username %>
+                      </h6>
+                      <p class="text-muted small mb-0">
+                        <%- comments[i].time_posted %>
+                      </p>
                     </div>
+                    <p class="mt-3 mb-4 pb-2"><%- comments[i].content %></p>
+
+                    <div class="d-flex justify-content-end">
+                      <% if (!user) { %>
+                      <div class="d-flex">
+                        <p><%- comments[i].likes %></p>
+                        <img
+                          src="img/fire.png"
+                          onclick="alert('You need to be logged in to like comments!')"
+                        />
+                      </div>
+                      <% } else if (likeSet.has(comments[i].comment_id)) { %>
+                        <!-- The user has liked the comment -->
+                      <form method="POST" action="/topic1/likeComment" class="d-flex">
+                        <p class="mb-0 likesCount"><%- comments[i].likes %></p>
+                        <button
+                          type="submit"
+                          class="voteButton" />
+                          <input
+                            type="hidden"
+                            name="comment_id"
+                            value="<%= comments[i].comment_id %>"
+                          />
+                          <input
+                            type="hidden"
+                            name="username"
+                            value="<%= user.username %>"
+                          />
+                          <input type="hidden" name="post_id" value="0" />
+                          <img
+                            src="img/fire.png"
+                            alt="vote"
+                            class="fireimg" />
+                        </button>
+                      </form>
+                      <% } else { %>
+                        <!-- The user has NOT liked the comment -->
+                      <form method="POST" action="/topic1/likeComment" class="d-flex">
+                        <p class="mb-0 likesCount"><%- comments[i].likes %></p>
+                        <button
+                          type="submit"
+                          class="voteButton unclicked" />
+                          <input
+                            type="hidden"
+                            name="comment_id"
+                            value="<%= comments[i].comment_id %>"
+                          />
+                          <input
+                            type="hidden"
+                            name="username"
+                            value="<%= user.username %>"
+                          />
+                          <input type="hidden" name="post_id" value="0" />
+                          <img
+                            src="img/fire.png"
+                            alt="vote"
+                            class="fireimg inactive" />
+                        </button>
+                      </form>
+                        <% } %>
+                    </div>
+                  </div>
+                </div>
+                <% } %> <%# End of template content %>
+              </div>
                     <!-- This is the end of the comment thread -->
                   </div>
                 </div>
@@ -340,7 +376,6 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"
 ></script>
-<script src="buttonLogic.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

@@ -19,9 +19,7 @@ Hosting a website on google cloud:
 
 Current issues:
 
-1a. Implement liking system
-
-1b. Implement sorting of comments
+1. Implement sorting of comments
 
 2. COME UP WITH CONTENT!!!!
 
