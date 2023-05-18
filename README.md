@@ -19,13 +19,13 @@ Hosting a website on google cloud:
 
 Current issues:
 
-1. To create DB and tables for comments and link it to the app
+1a. Implement liking system
 
-2b. Create database of comments for each subtopic and link code with database
+1b. Implement sorting of comments
 
-3. COME UP WITH CONTENT!!!!
+2. COME UP WITH CONTENT!!!!
 
-4. Make icon and change website name
+3. Make icon and change website name
 
 USEFUL LINKS
 
