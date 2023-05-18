@@ -49,7 +49,7 @@ router.get("/topic1", function (req, res, next) {
         if (err) {
           console.log("error getting comments: " + err.stack);
         }
-        res.render("topic1", { user: null, comments: results });
+        res.render("topic1", { user: null, comments: results, likedComments : null });
       }
     );
   } else {
@@ -85,7 +85,7 @@ router.get("/topic2", function (req, res, next) {
         if (err) {
           console.log("error getting comments: " + err.stack);
         }
-        res.render("topic2", { user: null, comments: results });
+        res.render("topic2", { user: null, comments: results, likedComments : null });
       }
     );
   } else {
@@ -121,7 +121,7 @@ router.get("/topic3", function (req, res, next) {
         if (err) {
           console.log("error getting comments: " + err.stack);
         }
-        res.render("topic3", { user: null, comments: results });
+        res.render("topic3", { user: null, comments: results, likedComments : null});
       }
     );
   } else {
