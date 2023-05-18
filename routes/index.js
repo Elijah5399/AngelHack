@@ -118,9 +118,8 @@ router.post("/postComment", function (req, res, next) {
     req.body.userPosted,
   ]);
 
+  //on posting comment, user is rediected to the home page
   res.redirect("/");
-  //on posting a comment, user is redirected to main page ??
-  //res.render("index", { user: req.user });
 });
 router.post("/topic1/postComment", function (req, res, next) {
   //Use an SQL query to insert the comment into the DB
@@ -133,7 +132,7 @@ router.post("/topic1/postComment", function (req, res, next) {
     req.body.userPosted,
   ]);
 
-  //on posting a comment, user is redirected to main page ??
+  //on posting a comment, user is redirected back to topic 1
   res.redirect("/topic1");
 });
 
@@ -148,7 +147,7 @@ router.post("/topic2/postComment", function (req, res, next) {
     req.body.userPosted,
   ]);
 
-  //on posting a comment, user is redirected to main page ??
+  //on posting a comment, user is redirected back to topic2
   res.redirect("/topic2");
 });
 
@@ -163,7 +162,7 @@ router.post("/topic3/postComment", function (req, res, next) {
     req.body.userPosted,
   ]);
 
-  //on posting a comment, user is redirected to main page ??
+  //on posting a comment, user is redirected back to topic3
   res.redirect("/topic3");
 });
 
