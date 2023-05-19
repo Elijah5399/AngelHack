@@ -68,6 +68,7 @@ router.get("/topic1", function (req, res, next) {
   } else if (sortingMethod == "fewestlikes") {
     appendedSQL = " ORDER BY likes"
   }
+  console.log("current user is: " + JSON.stringify(req.user));
   if (!req.user) {
     commentsConnection.query(
       process.env.SQL_FOR_RETRIEVING_COMMENTS + appendedSQL,
@@ -95,7 +96,7 @@ router.get("/topic1", function (req, res, next) {
             if (error) {
               console.log("error when checking likes: " + error.stack);
             } else {
-              console.log("likedComments for topic 1 is: " + JSON.stringify(likedComments));
+              console.log("Liked comments are: " + JSON.stringify(likedComments));
               res.render("topic1", { user : req.user, comments : results, likedComments : likedComments, sortingMethod : sortingMethod });
             }
           }
@@ -106,6 +107,7 @@ router.get("/topic1", function (req, res, next) {
 });
 
 router.get("/topic2", function (req, res, next) {
+  console.log("getting topic 2");
   const sortingMethod = req.query.sort;
   var appendedSQL = '';
   if (!sortingMethod) {
