@@ -60,7 +60,7 @@
         <a href="/login">
           <img
             class="float-right profileicon"
-            src="img/profilepic2.png"
+            src="../img/profilepic2.png"
             alt=""
             width="47"
             height="40"
@@ -306,10 +306,10 @@
                 value="3"
               />
               <% const datetime = new Date(); const conv1 =
-              datetime.toLocaleString("en-SG", {hour12 : false}); const conv2 =
-              conv1.slice(0, 10).split("/"); const conv3 = conv1.slice(12, 20);
-              const conv4 = conv2[2] + "-" + conv2[1] + "-" + conv2[0] + " " +
-              conv3;%>
+                  datetime.toLocaleString("en-SG", {hourCycle: "h23"}); const conv2 =
+                  conv1.slice(0, 10).split("/"); const conv3 = conv1.slice(12, 20);
+                  const conv4 = conv2[2] + "-" + conv2[1] + "-" + conv2[0] + " " +
+                  conv3;%>
               <input
                 type="hidden"
                 id="dateTracker"
@@ -399,6 +399,7 @@
                       <div class="d-flex">
                         <p><%- comments[i].likes %></p>
                         <img
+                        id="fire"
                           src="../img/fire.png"
                           onclick="alert('You need to be logged in to like comments!')"
                         />
@@ -422,6 +423,7 @@
                           />
                           <input type="hidden" name="post_id" value="3" />
                           <img
+                          id="fire"
                             src="../img/fire.png"
                             alt="vote"
                             class="fireimg" />
@@ -446,6 +448,7 @@
                           />
                           <input type="hidden" name="post_id" value="3" />
                           <img
+                          id="fire"
                             src="../img/fire.png"
                             alt="vote"
                             class="fireimg inactive" />

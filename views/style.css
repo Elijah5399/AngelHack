@@ -93,5 +93,5 @@ input[src="img/fire.png"] {
 }
 
 .fireimg:not(.inactive) {
-  filter: grayscale(0%);
+  filter: grayscale(0%) !important;
 }
