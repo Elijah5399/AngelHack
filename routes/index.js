@@ -27,7 +27,7 @@ router.get("/", function (req, res, next) {
           console.log("error getting comments: " + err.stack);
         }
         //if the user is not logged in then they haven't liked anything
-        res.render("index", { user: null, comments: results, likedComments: null });
+        res.render("index", { user: null, comments: results, likedComments: null, sortingMethod : sortingMethod });
       }
     );
   } else {
@@ -45,7 +45,7 @@ router.get("/", function (req, res, next) {
             if (error) {
               console.log("error when checking likes: " + error.stack);
             } else {
-              res.render("index", { user : req.user, comments : results, likedComments : likedComments});
+              res.render("index", { user : req.user, comments : results, likedComments : likedComments, sortingMethod : sortingMethod });
             }
           }
         )
