@@ -17,13 +17,19 @@ Hosting a website on google cloud:
 
 -Go to cloud services > cloud DNS, create zone. Enter any zone name. For DNS name, enter the domain name without any prefix, e.g. example.com and not www.example.com (need to have a DNS name beforehand)
 
-Current issues:
+Main quests:
 
-1. Implement sorting of comments
+1. COME UP WITH CONTENT!!!!
 
-2. COME UP WITH CONTENT!!!!
+2. Make icon and change website name
 
-3. Make icon and change website name
+3. Make about, help and contact page
+
+Side quests:
+
+1. Enable comment replying
+
+2. Enable comment deletion
 
 USEFUL LINKS
 

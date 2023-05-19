@@ -340,14 +340,32 @@
                 <span><%=comments.length%></span> Comments
               </p>
               <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Sort By
-                </button>
+                <% if (!sortingMethod) { %>
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort By
+                  </button>
+                  <% } else if (sortingMethod == "newest") {%>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Sorting By: Newest
+                    </button>
+                  <% } else if (sortingMethod == "oldest") { %>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Sorting By: Oldest
+                    </button>
+                  <% } else if (sortingMethod == "mostlikes") { %>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Sorting By: Most Likes
+                    </button>
+                  <% } else { %>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Sorting By: Fewest Likes
+                    </button>
+                  <% } %>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Newest</a>
-                  <a class="dropdown-item" href="#">Oldest</a>
-                  <a class="dropdown-item" href="#">Most Likes</a>
-                  <a class="dropdown-item" href="#">Fewest Likes</a>
+                  <a class="dropdown-item" href="/topic3/?sort=newest">Newest</a>
+                  <a class="dropdown-item" href="/topic3/?sort=oldest">Oldest</a>
+                  <a class="dropdown-item" href="/topic3/?sort=mostlikes">Most Likes</a>
+                  <a class="dropdown-item" href="/topic3/?sort=fewestlikes">Fewest Likes</a>
                 </div>
               </div>
             </div>
@@ -402,7 +420,7 @@
                             name="username"
                             value="<%= user.username %>"
                           />
-                          <input type="hidden" name="post_id" value="0" />
+                          <input type="hidden" name="post_id" value="3" />
                           <img
                             src="img/fire.png"
                             alt="vote"
@@ -426,7 +444,7 @@
                             name="username"
                             value="<%= user.username %>"
                           />
-                          <input type="hidden" name="post_id" value="0" />
+                          <input type="hidden" name="post_id" value="3" />
                           <img
                             src="img/fire.png"
                             alt="vote"

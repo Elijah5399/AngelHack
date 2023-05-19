@@ -85,7 +85,3 @@ input[src="img/fire.png"] {
 .fireimg:not(.inactive) {
   filter: grayscale(0%);
 }
-/*
-.likeButtonWrapper {
-
-}*/
