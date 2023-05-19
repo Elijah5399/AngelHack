@@ -4,9 +4,23 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
+  const sortingMethod = req.query.sort;
+  var appendedSQL = '';
+  if (!sortingMethod) {
+    //undefined sorting method; do nothing
+  } else if (sortingMethod == "newest") {
+    appendedSQL = " ORDER BY time_posted DESC"
+  } else if (sortingMethod == "oldest") {
+    appendedSQL = " ORDER BY time_posted"
+  } else if (sortingMethod == "mostlikes") {
+    appendedSQL = " ORDER BY likes DESC"
+  } else if (sortingMethod == "fewestlikes") {
+    appendedSQL = " ORDER BY likes"
+  }
+
   if (!req.user) {
     commentsConnection.query(
-      process.env.SQL_FOR_RETRIEVING_COMMENTS,
+      process.env.SQL_FOR_RETRIEVING_COMMENTS + appendedSQL,
       [0],
       function (err, results) {
         if (err) {
@@ -18,7 +32,7 @@ router.get("/", function (req, res, next) {
     );
   } else {
     commentsConnection.query(
-      process.env.SQL_FOR_RETRIEVING_COMMENTS,
+      process.env.SQL_FOR_RETRIEVING_COMMENTS + appendedSQL,
       [0],
       function (err, results) {
         if (err) {
@@ -32,114 +46,6 @@ router.get("/", function (req, res, next) {
               console.log("error when checking likes: " + error.stack);
             } else {
               res.render("index", { user : req.user, comments : results, likedComments : likedComments});
-            }
-          }
-        )
-      }
-    );
-  }
-});
-
-router.get("/topic1", function (req, res, next) {
-  if (!req.user) {
-    commentsConnection.query(
-      process.env.SQL_FOR_RETRIEVING_COMMENTS,
-      [1],
-      function (err, results) {
-        if (err) {
-          console.log("error getting comments: " + err.stack);
-        }
-        res.render("topic1", { user: null, comments: results, likedComments : null });
-      }
-    );
-  } else {
-    commentsConnection.query(
-      process.env.SQL_FOR_RETRIEVING_COMMENTS,
-      [1],
-      function (err, results) {
-        if (err) {
-          console.log("error getting comments: " + err.stack);
-        }
-        commentsConnection.query(
-          process.env.SQL_FOR_CHECKING_LIKES_2,
-          [0, req.user.username],
-          function (error, likedComments) {
-            if (error) {
-              console.log("error when checking likes: " + error.stack);
-            } else {
-              res.render("topic1", { user : req.user, comments : results, likedComments : likedComments});
-            }
-          }
-        )
-      }
-    );
-  }
-});
-
-router.get("/topic2", function (req, res, next) {
-  if (!req.user) {
-    commentsConnection.query(
-      process.env.SQL_FOR_RETRIEVING_COMMENTS,
-      [2],
-      function (err, results) {
-        if (err) {
-          console.log("error getting comments: " + err.stack);
-        }
-        res.render("topic2", { user: null, comments: results, likedComments : null });
-      }
-    );
-  } else {
-    commentsConnection.query(
-      process.env.SQL_FOR_RETRIEVING_COMMENTS,
-      [2],
-      function (err, results) {
-        if (err) {
-          console.log("error getting comments: " + err.stack);
-        }
-        commentsConnection.query(
-          process.env.SQL_FOR_CHECKING_LIKES_2,
-          [0, req.user.username],
-          function (error, likedComments) {
-            if (error) {
-              console.log("error when checking likes: " + error.stack);
-            } else {
-              res.render("topic2", { user : req.user, comments : results, likedComments : likedComments});
-            }
-          }
-        )
-      }
-    );
-  }
-});
-
-router.get("/topic3", function (req, res, next) {
-  if (!req.user) {
-    commentsConnection.query(
-      process.env.SQL_FOR_RETRIEVING_COMMENTS,
-      [3],
-      function (err, results) {
-        if (err) {
-          console.log("error getting comments: " + err.stack);
-        }
-        res.render("topic3", { user: null, comments: results, likedComments : null});
-      }
-    );
-  } else {
-    commentsConnection.query(
-      process.env.SQL_FOR_RETRIEVING_COMMENTS,
-      [3],
-      function (err, results) {
-        if (err) {
-          console.log("error getting comments: " + err.stack);
-        }
-        commentsConnection.query(
-          process.env.SQL_FOR_CHECKING_LIKES_2,
-          [0, req.user.username],
-          function (error, likedComments) {
-            if (error) {
-              console.log("error when checking likes: " + error.stack);
-            } else {
-              res.render("topic3", { user : req.user, comments : results, likedComments : likedComments});
             }
           }
         )
