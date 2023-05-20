@@ -54,6 +54,14 @@ router.get("/", function (req, res, next) {
   }
 });
 
+router.get("/about", function (req, res, next) {
+  if (!req.user) {
+    res.render("about", {user: null});
+  } else {
+    res.render("about", { user : req.user, comments : results, likedComments : likedComments});
+  }
+});
+
 router.get("/topic1", function (req, res, next) {
   const sortingMethod = req.query.sort;
   var appendedSQL = '';

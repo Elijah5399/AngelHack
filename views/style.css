@@ -95,3 +95,67 @@ input[src="img/fire.png"] {
 .fireimg:not(.inactive) {
   filter: grayscale(0%) !important;
 }
+
+#bg1-wrapper {
+  z-index: 10;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 0 0 0;
+  display: block;
+}
+
+#bg1 {
+  background-position: 50% 0px;
+  background: url("../img/sg2.jpeg") 25% 40px no-repeat fixed;
+  color: white;
+  height: 600px;
+  width: auto;
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+}
+
+.bannerText {
+  padding-top: 100px;
+  font-size: 40px;
+  font-family: "Raleway", sans-serif;
+  padding-left: 20px;
+}
+
+.bannerText1 {
+  padding-top: 10px;
+  font-size: 30px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  padding-left: 20px;
+}
+
+.teamIntro {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.teamIntro1 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+}
+
+.teamName {
+  color: #00cfef;
+  padding-top: 10px;
+}
+
+.story {
+  margin: 0 auto;
+  width: 60%;
+  height: auto;
+  font-family: "Raleway", sans-serif;
+}
+
+.teamIntro2 {
+  text-align: center;
+  color: #00cfef;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  margin-top: 20px;
+}
