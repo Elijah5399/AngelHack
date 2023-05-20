@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Singapore Finance Page</title>
-    <link href="style.css" rel="stylesheet" />
+    <link href="../style.css" rel="stylesheet" />
     <!--Bootstrap core CSS-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -60,7 +60,7 @@
         <a href="/login">
           <img
             class="float-right profileicon"
-            src="img/profilepic2.png"
+            src="../img/profilepic2.png"
             alt=""
             width="47"
             height="40"
@@ -75,9 +75,9 @@
             <input
               class="logout"
               type="image"
-              src="img/icons8-logout-50.png"
-              onmouseover="this.src='img/icons8-logout.gif'"
-              onmouseout="this.src='img/icons8-logout-50.png'"
+              src="../img/icons8-logout-50.png"
+              onmouseover="this.src='../img/icons8-logout.gif'"
+              onmouseout="this.src='../img/icons8-logout-50.png'"
             />
           </form>
         </div>
@@ -100,15 +100,15 @@
                 >
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                   <li>
-                    <a href="topic1" id="budgeting">Budgeting</a>
+                    <a href="/topic1" id="budgeting">Budgeting</a>
                   </li>
                   <li>
-                    <a href="topic2" id="income-and-expenses"
+                    <a href="/topic2" id="income-and-expenses"
                       >Income and Expenses</a
                     >
                   </li>
                   <li>
-                    <a href="topic3" id="saving">Saving</a>
+                    <a href="/topic3" id="saving">Saving</a>
                   </li>
                 </ul>
               </li>
@@ -306,10 +306,10 @@
                 value="3"
               />
               <% const datetime = new Date(); const conv1 =
-              datetime.toLocaleString("en-SG", {hour12 : false}); const conv2 =
-              conv1.slice(0, 10).split("/"); const conv3 = conv1.slice(12, 20);
-              const conv4 = conv2[2] + "-" + conv2[1] + "-" + conv2[0] + " " +
-              conv3;%>
+                  datetime.toLocaleString("en-SG", {hourCycle: "h23"}); const conv2 =
+                  conv1.slice(0, 10).split("/"); const conv3 = conv1.slice(12, 20);
+                  const conv4 = conv2[2] + "-" + conv2[1] + "-" + conv2[0] + " " +
+                  conv3;%>
               <input
                 type="hidden"
                 id="dateTracker"
@@ -399,7 +399,8 @@
                       <div class="d-flex">
                         <p><%- comments[i].likes %></p>
                         <img
-                          src="img/fire.png"
+                        id="fire"
+                          src="../img/fire.png"
                           onclick="alert('You need to be logged in to like comments!')"
                         />
                       </div>
@@ -422,7 +423,8 @@
                           />
                           <input type="hidden" name="post_id" value="3" />
                           <img
-                            src="img/fire.png"
+                          id="fire"
+                            src="../img/fire.png"
                             alt="vote"
                             class="fireimg" />
                         </button>
@@ -446,7 +448,8 @@
                           />
                           <input type="hidden" name="post_id" value="3" />
                           <img
-                            src="img/fire.png"
+                          id="fire"
+                            src="../img/fire.png"
                             alt="vote"
                             class="fireimg inactive" />
                         </button>
@@ -472,6 +475,6 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
   </body>
 </html>
