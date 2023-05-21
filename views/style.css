@@ -242,3 +242,36 @@ input[src="img/fire.png"] {
   margin-right: auto;
   display: block;
 }
+
+#content>ol, #content>ul {
+  border: 2px solid black;
+}
+
+ol>li>a, ul>li>a {
+  text-decoration: none;
+}
+
+#content>ol>li:not(:last-child), #content>ul> li:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+#homeSubmenu>li>a {
+  text-decoration: none;
+}
+
+.active>a {
+  /*color:red;*/
+  text-decoration: none;
+}
+
+
+link[rel="icon"] {
+  width: 48px;
+  height: auto;
+}
+
+.logo-img {
+  height: 48px;
+  width: auto;
+  padding-right: 15px;
+}
