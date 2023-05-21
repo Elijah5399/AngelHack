@@ -189,3 +189,14 @@ input[src="img/fire.png"] {
   border-radius: 50%;
   align-self: center;
 }
+
+link[rel="icon"] {
+  width: 48px;
+  height: auto;
+}
+
+.logo-img {
+  height: 48px;
+  width: auto;
+  padding-right: 15px;
+}
