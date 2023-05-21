@@ -112,3 +112,12 @@ body {
   color: green;
 }
 
+link[rel="icon"] {
+  width: 48px;
+  height: auto;
+}
+
+.logo-img {
+  height: 48px;
+  width: auto;
+  padding-right: 15px;
