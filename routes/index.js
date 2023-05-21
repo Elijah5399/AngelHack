@@ -4,18 +4,19 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  const sortingMethod = req.query.sort;
-  var appendedSQL = '';
+  var sortingMethod = req.query.sort;
+  var appendedSQL = "";
   if (!sortingMethod) {
+    sortingMethod = null;
     //undefined sorting method; do nothing
   } else if (sortingMethod == "newest") {
-    appendedSQL = " ORDER BY time_posted DESC"
+    appendedSQL = " ORDER BY time_posted DESC";
   } else if (sortingMethod == "oldest") {
-    appendedSQL = " ORDER BY time_posted"
+    appendedSQL = " ORDER BY time_posted";
   } else if (sortingMethod == "mostlikes") {
-    appendedSQL = " ORDER BY likes DESC"
+    appendedSQL = " ORDER BY likes DESC";
   } else if (sortingMethod == "fewestlikes") {
-    appendedSQL = " ORDER BY likes"
+    appendedSQL = " ORDER BY likes";
   }
 
   if (!req.user) {
@@ -27,7 +28,12 @@ router.get("/", function (req, res, next) {
           console.log("error getting comments: " + err.stack);
         }
         //if the user is not logged in then they haven't liked anything
-        res.render("index", { user: null, comments: results, likedComments: null, sortingMethod : sortingMethod });
+        res.render("index", {
+          user: null,
+          comments: results,
+          likedComments: null,
+          sortingMethod: sortingMethod,
+        });
       }
     );
   } else {
@@ -45,10 +51,15 @@ router.get("/", function (req, res, next) {
             if (error) {
               console.log("error when checking likes: " + error.stack);
             } else {
-              res.render("index", { user : req.user, comments : results, likedComments : likedComments, sortingMethod : sortingMethod });
+              res.render("index", {
+                user: req.user,
+                comments: results,
+                likedComments: likedComments,
+                sortingMethod: sortingMethod,
+              });
             }
           }
-        )
+        );
       }
     );
   }
@@ -56,25 +67,27 @@ router.get("/", function (req, res, next) {
 
 router.get("/about", function (req, res, next) {
   if (!req.user) {
-    res.render("about", {user: null});
+    res.render("about", { user: null });
   } else {
-    res.render("about", { user : req.user, comments : results, likedComments : likedComments});
+    res.render("about", {
+      user: req.user,
+    });
   }
 });
 
 router.get("/topic1", function (req, res, next) {
   const sortingMethod = req.query.sort;
-  var appendedSQL = '';
+  var appendedSQL = "";
   if (!sortingMethod) {
     //undefined sorting method; do nothing
   } else if (sortingMethod == "newest") {
-    appendedSQL = " ORDER BY time_posted DESC"
+    appendedSQL = " ORDER BY time_posted DESC";
   } else if (sortingMethod == "oldest") {
-    appendedSQL = " ORDER BY time_posted"
+    appendedSQL = " ORDER BY time_posted";
   } else if (sortingMethod == "mostlikes") {
-    appendedSQL = " ORDER BY likes DESC"
+    appendedSQL = " ORDER BY likes DESC";
   } else if (sortingMethod == "fewestlikes") {
-    appendedSQL = " ORDER BY likes"
+    appendedSQL = " ORDER BY likes";
   }
   console.log("current user is: " + JSON.stringify(req.user));
   if (!req.user) {
@@ -86,7 +99,12 @@ router.get("/topic1", function (req, res, next) {
           console.log("error getting comments: " + err.stack);
         }
         //if the user is not logged in then they haven't liked anything
-        res.render("topic1", { user: null, comments: results, likedComments: null, sortingMethod : sortingMethod });
+        res.render("topic1", {
+          user: null,
+          comments: results,
+          likedComments: null,
+          sortingMethod: sortingMethod,
+        });
       }
     );
   } else {
@@ -104,11 +122,18 @@ router.get("/topic1", function (req, res, next) {
             if (error) {
               console.log("error when checking likes: " + error.stack);
             } else {
-              console.log("Liked comments are: " + JSON.stringify(likedComments));
-              res.render("topic1", { user : req.user, comments : results, likedComments : likedComments, sortingMethod : sortingMethod });
+              console.log(
+                "Liked comments are: " + JSON.stringify(likedComments)
+              );
+              res.render("topic1", {
+                user: req.user,
+                comments: results,
+                likedComments: likedComments,
+                sortingMethod: sortingMethod,
+              });
             }
           }
-        )
+        );
       }
     );
   }
@@ -117,17 +142,17 @@ router.get("/topic1", function (req, res, next) {
 router.get("/topic2", function (req, res, next) {
   console.log("getting topic 2");
   const sortingMethod = req.query.sort;
-  var appendedSQL = '';
+  var appendedSQL = "";
   if (!sortingMethod) {
     //undefined sorting method; do nothing
   } else if (sortingMethod == "newest") {
-    appendedSQL = " ORDER BY time_posted DESC"
+    appendedSQL = " ORDER BY time_posted DESC";
   } else if (sortingMethod == "oldest") {
-    appendedSQL = " ORDER BY time_posted"
+    appendedSQL = " ORDER BY time_posted";
   } else if (sortingMethod == "mostlikes") {
-    appendedSQL = " ORDER BY likes DESC"
+    appendedSQL = " ORDER BY likes DESC";
   } else if (sortingMethod == "fewestlikes") {
-    appendedSQL = " ORDER BY likes"
+    appendedSQL = " ORDER BY likes";
   }
 
   if (!req.user) {
@@ -139,7 +164,12 @@ router.get("/topic2", function (req, res, next) {
           console.log("error getting comments: " + err.stack);
         }
         //if the user is not logged in then they haven't liked anything
-        res.render("topic2", { user: null, comments: results, likedComments: null, sortingMethod : sortingMethod });
+        res.render("topic2", {
+          user: null,
+          comments: results,
+          likedComments: null,
+          sortingMethod: sortingMethod,
+        });
       }
     );
   } else {
@@ -157,10 +187,15 @@ router.get("/topic2", function (req, res, next) {
             if (error) {
               console.log("error when checking likes: " + error.stack);
             } else {
-              res.render("topic2", { user : req.user, comments : results, likedComments : likedComments, sortingMethod : sortingMethod });
+              res.render("topic2", {
+                user: req.user,
+                comments: results,
+                likedComments: likedComments,
+                sortingMethod: sortingMethod,
+              });
             }
           }
-        )
+        );
       }
     );
   }
@@ -168,17 +203,17 @@ router.get("/topic2", function (req, res, next) {
 
 router.get("/topic3", function (req, res, next) {
   const sortingMethod = req.query.sort;
-  var appendedSQL = '';
+  var appendedSQL = "";
   if (!sortingMethod) {
     //undefined sorting method; do nothing
   } else if (sortingMethod == "newest") {
-    appendedSQL = " ORDER BY time_posted DESC"
+    appendedSQL = " ORDER BY time_posted DESC";
   } else if (sortingMethod == "oldest") {
-    appendedSQL = " ORDER BY time_posted"
+    appendedSQL = " ORDER BY time_posted";
   } else if (sortingMethod == "mostlikes") {
-    appendedSQL = " ORDER BY likes DESC"
+    appendedSQL = " ORDER BY likes DESC";
   } else if (sortingMethod == "fewestlikes") {
-    appendedSQL = " ORDER BY likes"
+    appendedSQL = " ORDER BY likes";
   }
 
   if (!req.user) {
@@ -190,7 +225,12 @@ router.get("/topic3", function (req, res, next) {
           console.log("error getting comments: " + err.stack);
         }
         //if the user is not logged in then they haven't liked anything
-        res.render("topic3", { user: null, comments: results, likedComments: null, sortingMethod : sortingMethod });
+        res.render("topic3", {
+          user: null,
+          comments: results,
+          likedComments: null,
+          sortingMethod: sortingMethod,
+        });
       }
     );
   } else {
@@ -208,10 +248,15 @@ router.get("/topic3", function (req, res, next) {
             if (error) {
               console.log("error when checking likes: " + error.stack);
             } else {
-              res.render("topic3", { user : req.user, comments : results, likedComments : likedComments, sortingMethod : sortingMethod });
+              res.render("topic3", {
+                user: req.user,
+                comments: results,
+                likedComments: likedComments,
+                sortingMethod: sortingMethod,
+              });
             }
           }
-        )
+        );
       }
     );
   }
