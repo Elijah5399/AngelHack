@@ -45,13 +45,7 @@
               <a class="nav-link" href="/" onclick="home()">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Help</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="/about">About</a>
             </li>
           </ul>
         </div>
@@ -137,44 +131,43 @@
         crossorigin="anonymous"
       ></script>
       <script>
-        let input = document.getElementById('floatingPassword');
+        let input = document.getElementById("floatingPassword");
         let letter = document.getElementById("letter");
         let capital = document.getElementById("capital");
         let number = document.getElementById("number");
         let length = document.getElementById("length");
 
-        input.onfocus = function() {
+        input.onfocus = function () {
           document.getElementById("message").style.display = "block";
-        }
-        input.onblur = function() {
+        };
+        input.onblur = function () {
           document.getElementById("message").style.display = "none";
-        }
-        input.onkeyup = function() {
+        };
+        input.onkeyup = function () {
           let lowerCaseLetters = /[a-z]/g;
-          if(input.value.match(lowerCaseLetters)) {
+          if (input.value.match(lowerCaseLetters)) {
             letter.classList.add("valid");
           } else {
             letter.classList.remove("valid");
           }
           let upperCaseLetters = /[A-Z]/g;
-          if(input.value.match(upperCaseLetters)) {
+          if (input.value.match(upperCaseLetters)) {
             capital.classList.add("valid");
           } else {
             capital.classList.remove("valid");
           }
           let numbers = /[0-9]/g;
-          if(input.value.match(numbers)) {
+          if (input.value.match(numbers)) {
             number.classList.add("valid");
           } else {
             number.classList.remove("valid");
           }
-          if(input.value.length >= 8) {
+          if (input.value.length >= 8) {
             length.classList.add("valid");
           } else {
             length.classList.remove("valid");
           }
-        }
-
+        };
       </script>
     </body>
   </div>
