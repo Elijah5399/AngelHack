@@ -200,3 +200,23 @@ link[rel="icon"] {
   width: auto;
   padding-right: 15px;
 }
+#content>ol, #content>ul {
+  border: 2px solid black;
+}
+
+ol>li>a, ul>li>a {
+  text-decoration: none;
+}
+
+#content>ol>li:not(:last-child), #content>ul> li:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+#homeSubmenu>li>a {
+  text-decoration: none;
+}
+
+.active>a {
+  /*color:red;*/
+  text-decoration: none;
+}
