@@ -85,7 +85,7 @@ body {
     bottom: 0;
   }
   100% {
-    transform: scale(10);
+    transform: scale(4.5);
     opacity: 0;
     bottom: 100vh;
   }
@@ -112,3 +112,13 @@ body {
   color: green;
 }
 
+link[rel="icon"] {
+  width: 48px;
+  height: auto;
+}
+
+.logo-img {
+  height: 48px;
+  width: auto;
+  padding-right: 15px;
+}
