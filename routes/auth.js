@@ -7,12 +7,27 @@ var router = express.Router();
 const mysql = require("mysql2");
 
 //here we use the environment variables declared in the .env files to establish a connection to the SQL database
+//development code
+
 const options = {
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_DATABASE,
 };
+
+//production code
+/*
+let options = {
+  user: process.env.DB_USER,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASS,
+};
+
+if (process.env.NODE_ENV === "production") {
+  options.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
+}
+*/
 
 const connection = mysql.createConnection(options); // or mysql.createPool(options);
 
