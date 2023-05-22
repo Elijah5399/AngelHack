@@ -85,7 +85,7 @@ body {
     bottom: 0;
   }
   100% {
-    transform: scale(10);
+    transform: scale(4.5);
     opacity: 0;
     bottom: 100vh;
   }
