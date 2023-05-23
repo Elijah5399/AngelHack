@@ -310,3 +310,17 @@ link[rel="icon"] {
 #nav-header {
   margin-bottom: 10px;
 }
+
+p>a {
+  text-decoration: none;
+}
+
+#content h5 {
+  margin-top: 5px;
+}
+
+.contentStyle {
+  border: 2px solid black;
+  padding-left: 5px;
+  margin-bottom:2px;
+}
