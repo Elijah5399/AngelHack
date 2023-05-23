@@ -1,48 +1,28 @@
 # AngelHack
 
-Note to self: IMPT SQL COMMANDS
-USE {database name}
-SHOW TABLES
-SELECT \* FROM {table}
-SHOW COLUMNS in {table}
+Temporarily hosted on: http://singaporefinancetoolkit.com
 
-NOTE TO SELF:
-Hosting a website on google cloud:
+## Summary
 
--create a compute engine instance
+Singapore Finance Toolkit is a website dedicated to providing young adults with a wide range of advice on financial topics in Singapore. The site aims to make financial knowledge more centralised and accessible.
 
--get the ip address of the instance
+## Technologies used
 
--make the ip address static by reserving it
+Front-end: We used HTML, CSS, Javascript and Bootstrap for the front-end.
 
--Go to cloud services > cloud DNS, create zone. Enter any zone name. For DNS name, enter the domain name without any prefix, e.g. example.com and not www.example.com (need to have a DNS name beforehand)
+Back-end: We used MySQL to store data such as encrypted passwords, usernames, comments, and likes.
 
-Main quests:
+Frameworks: We used Express.js to easily handle HTTP get and post requests. Other NPM packages were also used to facilitate routing, login sessions, logins and connecting to the database.
 
-1. COME UP WITH CONTENT!!!!
+Infrastructure/services: Our database is hosted on Google Cloud SQL, and our Node.js application is run on Google Compute Engine.
 
-2. Make icon and change website name
+## Possible improvements
 
-3. Make about, help and contact page
-
-Side quests:
-
-1. Enable comment replying
-
-2. Enable comment deletion
-
-USEFUL LINKS
-
-https://getbootstrap.com/docs/4.1/getting-started/introduction/
-
-https://www.passportjs.org/
-
-https://expressjs.com/en/resources/middleware/session.html
-
-https://ejs.co/
-
-https://expressjs.com/
-
-https://nodejs.org/api/crypto.html
-
-https://expressjs.com/en/guide/routing.html
+1. Profile customisation: Allow users to have their own profile pictures and describe themselves.
+2. Suggestions for content modifications/additional content: Add a section to our site for users to suggest new resources we can include, or any modifications we should make to our content.
+3. Content: Although our current content is engaging to young adults, it does not go into great detail for each subtopic. The webpages could be lengthened, or more subtopics could be created to go into greater depth.
+4. Improvements for commenting feature:
+   - Comment deletion feature to allow users to delete their own comments.
+   - Nested commenting (allow users to reply to others’ content).
+   - Use AI to gauge the legitimacy of comments.
+   - Limit the number of comments shown (Will become a problem when a subtopic has too many comments).
