@@ -3,6 +3,7 @@
   <head>
     <title>Singapore Finance Page</title>
     <link href="../style.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <link rel="icon" href="/img/sg_finance_toolkit.png" type="image/x-icon">
     <!--Bootstrap core CSS-->
     <link
@@ -84,6 +85,9 @@
         <!-- Side navbar, use list items for each topic-->
         <div class="wrapper">
           <nav id="sidebar" class="navbar-light bg-light">
+            <a href="#" class="close" onclick="closeSlideMenu()">
+              <i class="fa fa-times"></i>
+          </a>
             <ul class="list-unstyled components">
               <p id="nav-header">Navigation</p>
               <li class="active">
@@ -120,6 +124,9 @@
         </div>
         <!-- End of side navbar, start of displayed contents-->
         <div class="container-fluid bootstrap-override" id="right-container">
+          <span class="slide">
+            <a href="#" onclick="openSlideMenu()"><i class="fas fa-bars"></i></a>
+          </span>
           <div class="container-fluid m-0 pl-4 pr-4 pt-1" id="content">
             <h2><b>Investing for dummies</b></h2>
             <div class="line"></div>
