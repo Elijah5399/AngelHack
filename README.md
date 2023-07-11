@@ -1,7 +1,4 @@
 # AngelHack
-
-Temporarily hosted on: http://singaporefinancetoolkit.com
-
 ## Summary
 
 Singapore Finance Toolkit is a website dedicated to providing young adults with a wide range of advice on financial topics in Singapore. The site aims to make financial knowledge more centralised and accessible.
